@@ -72,14 +72,20 @@
     		<div class = "box">
     		<img src= "/uploads/<?=$user['picture'];?>" style = "position:relative; float:left; height:100px; width:100px;"><br>
     		 <strong style="color:#000000"><?=$user['first_name']?> <?=$user['last_name']?></strong>  
-			<div style="position:relative; text-align:center; margin-top:5%;"> 
-			
-			
+			<div style="position:relative; text-align:center; margin-top:10%;"> 
+						
 			<?php if(isset($connections[$user['user_id']])): ?>
-				<a href='/posts/unfollow/<?=$user['user_id']?>'>
-        		<input type='Submit' value='Unfollow' class="button"></a>
+				
+        <div id="<?=$user['user_id']?>" class="jr-btn-container">
+	     <a class = "participation fol-btn" style="background:#459dcd;" href='<?=$user['user_id']?>' >Unfollow</a>
+	    </div>
+    		
     		<?php else: ?>
-        		<a href='/posts/follow/<?=$user['user_id']?>'><input type='submit' value='+ Follow' class="button" ></a>
+        		
+        <div id="<?=$user['user_id']?>" class="jr-btn-container">
+	     <a class = "participation fol-btn" href='<?=$user['user_id']?>' >Follow</a>
+	    </div>
+	        	       		
    			<?php endif; ?>
    			</div>
    	</div>
@@ -88,14 +94,54 @@
 <?php endforeach; ?>
 
 
+<script>
 
-
-
-
-
-
-
-
+$('.fol-btn').click(function(e) {
+    e.preventDefault()   
+    var lnk=$(this)    
+	      //alert(lnk.attr('href'))
+    if(lnk.text()=='Follow') {
+	    $.ajax({
+	        type: 'POST',
+	        data: {
+	            id: lnk.attr('href')
+	        },
+	        url: '/posts/'+'follow',
+	        success: function(response) {
+	        
+	          if (response == 'false') {
+	            console.log('an error returns');
+	            return;
+	          } else {
+	          	$(e.target).css('background','#459dcd');
+	          		            lnk.text('Unfollow')	            
+	          } 
+	            
+	        }
+	    }); 
+    }
+    else {
+	     $.ajax({
+		        type: 'POST',
+		        data: {
+		            id: lnk.attr('href')
+		        },
+		        url: '/posts/'+'unfollow',
+		        success: function(response) {
+		          if (response == 'false') {
+		            console.log('an error returns');
+		            return;
+		          } else {
+		          	$(e.target).css('background','#9dce2c');
+		              		    
+					  lnk.text('Follow')					  
+		          } 
+		            
+		        }
+		    }); 
+    }
+});
+</script>
 
 
 </div>

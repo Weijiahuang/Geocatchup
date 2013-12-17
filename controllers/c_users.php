@@ -105,8 +105,8 @@ class users_controller extends base_controller {
 			$headers = "From:" . $from;
 			mail($to,$subject,$message,$headers);
 			
-			#follow yourself
 			
+			#follow yourself
 			$data = Array(
 			"created" => Time::now(),
 			"user_id" => $user_id,

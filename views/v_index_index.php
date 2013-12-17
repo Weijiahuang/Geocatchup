@@ -33,8 +33,7 @@ Password
 Locate and connect your friends. Instantly. 
 </h1>
 
-<div id ="picture">
-</div>
+<iframe width="420" height="315" src="//www.youtube.com/embed/4hlJPfq8zdw" frameborder="0" allowfullscreen></iframe>
 
 <div id="signupbox">
 <h2> Get Started! </h2>

@@ -1,14 +1,4 @@
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  
-  
-  <script src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.3">
-</script>
-
-
-
-<script type="text/javascript">
+<script>
     var map = null;
     var pinPoint = null;
     var pinPixel = null;
@@ -80,23 +70,9 @@ function newDoc()
     });
   window.location.assign("http://test.geohangout.biz/facebooklogin.html")
   }
-
 </script>
- <style > 
-  #mapContainer {
-    height: 220px  !important;
-    width: 16% !important;
-    border:5px solid black;
-    position: absolute;
-    top : 340px; left : 3.4%;
-}
-#logout{
-	position: relative;
-	top : 400px; left : 0px;
-	
-}
-</style>
-  
+
+
   <style>
     body { font-size: 62.5%; }
     label, input { display:block; }
@@ -111,9 +87,10 @@ function newDoc()
   $(function() {
     var 
       interest = $( "#interest" ),
+      date= $('#date'),
       time=$ ('#time'),
-      place = $( "#place" ),
-      allFields = $( [] ).add(interest).add(time).add(place),
+      place = $( "#place" ),      
+      allFields = $( [] ).add(interest).add(date).add(time).add(place),
       tips = $( ".validateTips" );
  
     function updateTips( t ) {
@@ -157,10 +134,12 @@ function newDoc()
           allFields.removeClass( "ui-state-error" );
  
           bValid = bValid && checkLength( interest, "interest", 0, 60 );
+          bValid = bValid && checkLength( date, "interest", 0, 60 );
           bValid = bValid && checkLength( time, "time", 0, 80 );
           bValid = bValid && checkLength( place, "place", 0, 50 );
           bValid = bValid && checkRegexp( interest, /^[a-z]([0-9a-z_, !A-Z"])+$/i, "Incorrect Activity Input." );
-         bValid = bValid && checkRegexp(time, /^([0-9a-z-: ])+$/i, "Incorrect time frame. ");
+         bValid = bValid && checkRegexp(date, /^([0-9a-z-:/ ])+$/i, "Incorrect time");
+         bValid = bValid && checkRegexp(time, /^([0-9a-z-:/ ])+$/i, "Incorrect time");
          bValid = bValid && checkRegexp( place, /^([0-9a-zA-Z,: ])+$/, "Invalid location." );
     
           if ( bValid ) {
@@ -218,11 +197,13 @@ function newDoc()
   <form name="eventForm" id="eventForm" method="post" action="/posts/p_add">
   <fieldset>
     <label for="interest">Activity</label>
-    <input type="text" style="width:300px;" name="interest" id="interest" placeholder="Movie,Music" class="text ui-widget-content ui-corner-all">
-    <label for="Time">Data and time</label>
-    <input type="text" style="width:300px;" name="Time" id="time" placeholder="11:20am-2:20pm Nov 12th" class="text ui-widget-content ui-corner-all">
+    <input type="text" style="width:300px;" name="interest" id="interest" value="Movie" class="text ui-widget-content ui-corner-all">
+    <label for="date">Date</label>
+    <input type="text" style="width:100px; " name="date" id="date" value="<?= date("m/d/Y")?>"  class="text ui-widget-content ui-corner-all">
+    <input type="text" style="width:80px; postion:absolute; margin-left:140px; margin-top:-36px;" name="time" id="time" placeholder="Time?" class="text ui-widget-content ui-corner-all">
+    
     <label for="place">Location</label>
-    <input type="text" style="width:300px;" name="place" id="place" placeholder="Cambridge, MA" class="text ui-widget-content ui-corner-all">
+    <input type="text" style="width:300px;" name="place" id="place" value="Cambridge, MA" class="text ui-widget-content ui-corner-all">
     <br>
     
     <select>
@@ -291,7 +272,7 @@ function newDoc()
     <!-- activity content -->
     <div style="position:relative; text-align:center;">      
     Activity: <strong > <?=$post['interest']?> </strong><br>
-    Time: <?=$post['time']?><br>
+    Time: <?=$post['date']?> <?=$post['time']?><br>
     Place: <?=$post['place']?> <br>
     <time style="margin-left:2%; color:#BDBDBD;" datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
         <?=Time::display($post['created'])?>
@@ -359,8 +340,6 @@ $('.jr-btn').click(function(e) {
 	            
 	        }
 	    }); 
-
-      
     }
     else {
 	     $.ajax({
@@ -383,58 +362,15 @@ $('.jr-btn').click(function(e) {
 		    }); 
     }
 })
-
-
-$('.join-button').click(function(event) {
-
-	event.preventDefault();
-	console.log(event.target.id);
-    $.ajax({
-        type: 'POST',
-        data: {
-        	id: event.target.id
-        },
-        url: '/posts/join',
-        success: function(response) {
-          if (response == 'false') {
-            console.log('an error returns');
-            return;
-          } else {
-            console.log(response);
-            var str = '<a href="/something/add/">' + response + '</a>';
-			$("#" + event.target.id).html("Remove");
-          } 
-            
-        }
-    }); // end ajax setup
-});
-
-$('.remove').click(function(event) {
-
-	event.preventDefault();
-	console.log(event.target.id);
-    $.ajax({
-        type: 'POST',
-        data: {
-        	id: event.target.id
-        },
-        url: '/posts/remove',
-        success: function(response) {
-          if (response == 'false') {
-            console.log('an error returns');
-            return;
-          } else {
-            console.log(response);
-            var str = '<a href="/something/add/">' + response + '</a>';
-			$("#" + event.target.id).html("Join");
-          } 
-            
-        }
-    }); // end ajax setup
-});
-
-
 </script>
+
+<script>
+  $(function() {
+    $( "#date" ).datepicker();
+  });
+    
+</script>
+
 
 
 </div>

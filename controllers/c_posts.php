@@ -36,7 +36,7 @@ class posts_controller extends base_controller {
         # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
         DB::instance(DB_NAME)->insert('posts', $_POST);
         
-        Router::redirect('/posts/index');
+	        Router::redirect('/posts/index');
         
         # Quick and dirty feedback
         echo "Your post has been added. <a href='/posts/add'>Add another</a>";
@@ -52,8 +52,10 @@ class posts_controller extends base_controller {
 	     	$search_place = $_GET['place'];
 	     	
 		 	$q = 'SELECT
+		 		posts.post_id,
     			posts.interest,
 				posts.picture,
+				posts.date,
 				posts.time,
 				posts.place, 
 				posts.content,
@@ -71,17 +73,22 @@ class posts_controller extends base_controller {
 				AND posts.interest like "%'.$search_interest.'%"
 				AND posts.place like "%'.$search_place.'%" 
 				ORDER BY posts.created DESC';
-				
-				
-				# Run the query, store the results in the variable $posts
-				$posts = DB::instance(DB_NAME)->select_rows($q);
+			
+			# Run the query, store the results in the variable $posts
+			$posts = DB::instance(DB_NAME)->select_rows($q);
+			
+			$q = "SELECT * 
+				FROM users_posts
+				WHERE user_id = ".$this->user->user_id;
+	
+				$join_connections = DB::instance(DB_NAME)->select_array($q, 'post_id_followed');
 				
 				# Pass data to the View
 				$this->template->content->posts = $posts;
-
+				$this->template->content->join_connections = $join_connections;
+			
 				# Render the View
-				echo $this->template;
-								
+				echo $this->template;								
 		}
     }
     
@@ -91,32 +98,33 @@ class posts_controller extends base_controller {
 	   {	 	
 		    $this->template->content = View::instance('v_posts_users');	 	
 			$this->template->title   = "Find Users";	 	
-			if(isset($_GET['search']))	 	
-			{	 	
+	
 		     	 $search_name= $_GET['name'];	 		
 		     		 	
 			 	 	 	
-			 	$q = 'SELECT	 	
-	    			users.first_name,	 	
-					users.last_name	 	
+			 	$q = 'SELECT *	
 					FROM users	 	
 					WHERE users.first_name like "%'.$search_name.'%"	 	
 					OR users.last_name like "%'.$search_name.'%" 	 	
 					ORDER BY users.created DESC';	 						 	
-						 	
-					# Run the query, store the results in the variable $users	 	
-					$users = DB::instance(DB_NAME)->select_rows($q);	 	
 					
-					# Pass data to the View	 	
-					$this->template->content->users = $users;	 	
+			# Run the query, store the results in the variable $users	 	
+			$users = DB::instance(DB_NAME)->select_rows($q);
+			
+			$q = "SELECT *
+    		FROM users_users
+    		WHERE user_id = ".$this->user->user_id;
+    		
+			$connections = DB::instance(DB_NAME)->select_array($q, 'user_id_followed');
+    	
+			echo $connections;
+			$this->template->content->users       = $users;
+			$this->template->content->connections = $connections;
 		 	
-					# Render the View	 	
-					echo $this->template; 	 	
-					 											 	
-			}	 	
+			# Render the View	 	
+			echo $this->template; 	 			 											 	
 	    }
 	    
-    
     public function index()
     {
     
@@ -129,6 +137,7 @@ class posts_controller extends base_controller {
     		posts.interest,
     		posts.post_id,
     		posts.picture,
+    		posts.date,
     		posts.time,
     		posts.place, 
             posts.content,
@@ -142,7 +151,8 @@ class posts_controller extends base_controller {
         INNER JOIN users_users 
             ON posts.user_id = users_users.user_id_followed
         INNER JOIN users 
-            ON posts.user_id = users.user_id ORDER BY posts.created DESC';
+            ON posts.user_id = users.user_id
+        WHERE users_users.user_id = '.$this->user->user_id.' ORDER BY posts.created DESC';
       
 
     # Run the query, store the results in the variable $posts
@@ -169,10 +179,11 @@ class posts_controller extends base_controller {
     }
     
     
-    
     public function users() 
     {
+    	# Set up the View
     	$this->template->content = View::instance('v_posts_users');
+    	$this->template->title   = "Users";
     	
     	$q ='SELECT *
     		FROM users';
@@ -185,7 +196,7 @@ class posts_controller extends base_controller {
     		
     	$connections = DB::instance(DB_NAME)->select_array($q, 'user_id_followed');
     	
-    	$this-> template-> content-> users = $users;
+    	$this->template->content->users       = $users;
     	$this->template->content->connections = $connections;
     	
     	echo  $this->template;
@@ -244,13 +255,14 @@ class posts_controller extends base_controller {
     }
     
         
-    public function follow($user_id_followed) {
-
+    public function follow($user_id_followed=NULL) {
+    
+	
     # Prepare the data array to be inserted
     $data = Array(
         "created" => Time::now(),
         "user_id" => $this->user->user_id,
-        "user_id_followed" => $user_id_followed
+        "user_id_followed" => $_POST['id']
         );
 
     # Do the insert
@@ -260,11 +272,24 @@ class posts_controller extends base_controller {
     Router::redirect("/posts/users");
 
 	}
-
-	public function unfollow($user_id_followed) {
+	
+	public function unfollow1($user_id_followed) {
 
     # Delete this connection
     $where_condition = 'WHERE user_id = '.$this->user->user_id.' AND user_id_followed = '.$user_id_followed;
+    DB::instance(DB_NAME)->delete('users_users', $where_condition);
+
+    # Send them back
+    Router::redirect("/posts/users");
+
+	}
+	
+	
+
+	public function unfollow($user_id_followed=NULL) {
+
+    # Delete this connection
+    $where_condition = 'WHERE user_id = '.$this->user->user_id.' AND user_id_followed = '.$_POST['id'];
     DB::instance(DB_NAME)->delete('users_users', $where_condition);
 
     # Send them back
