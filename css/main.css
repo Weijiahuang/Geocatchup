@@ -1,18 +1,28 @@
-
+/*
+Map 
+*/
 
 #mapContainer {
     height: 220px  !important;
     width: 16% !important;
     border:5px solid black;
     position: absolute;
-    top : 340px; left : 3.4%;
+    top : 333px; left : 2.8%;
 }
+
+
 #logout{
 	position: relative;
 	top : 400px; left : 0px;
-	
 }
 
+#activity
+{
+color: #0f90ba;
+font-size: 16px;
+font-weight: 600;
+	
+}
 
 form{
 	width:500px;
@@ -29,7 +39,7 @@ input[type=text]{
 }
 
 .jr-btn {
-	position:relative; float:right; margin-top:-10%; margin-right:5%; padding:3px; width:100px;
+	position:relative; float:right; margin-top:-10%; margin-right:-5%; width:100px;
 }
 
 .jr-btn-container {
@@ -41,7 +51,7 @@ input[type=text]{
 	position: relative; margin-top: 10%; float:right; margin-right: 60%; width: 80px;
 }
 
-.participation
+.participation,.button
 {
 	moz-box-shadow:inset 0px 1px 0px 0px #c1ed9c;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #c1ed9c;
@@ -218,6 +228,9 @@ width:auto;
 background-color: white;
 }
 
+#box{
+background-color:e1d9da; font-size:14px; width:80%; border-radius: 8px; -moz-border-radius: 4px; -webkit-border-radius: 4px; margin-left:5%;
+}
 
 #logo
 {

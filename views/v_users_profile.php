@@ -41,7 +41,7 @@
 
 <input type="file" name="file" id="file">
 
-<input type="submit" name="submit" value="Submit">
+<input class="participation" type="submit" name="submit" value="Submit">
 </form>
 </div>
 

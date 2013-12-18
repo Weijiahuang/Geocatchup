@@ -1,3 +1,6 @@
+<!--------------------------------------------------------------------------------------------------------------------------------
+Bing Map
+--------------------------------------------------------------------------------------------------------------------------------->
 <script>
     var map = null;
     var pinPoint = null;
@@ -82,6 +85,10 @@ function newDoc()
     .ui-dialog .ui-state-error { padding: .3em; }
     .validateTips { border: 1px solid transparent; padding: 0.3em; }
   </style>
+
+<!--------------------------------------------------------------------------------------------------------------------------------
+pop up windows
+--------------------------------------------------------------------------------------------------------------------------------->  
   
   <script>
   $(function() {
@@ -136,46 +143,54 @@ function newDoc()
           bValid = bValid && checkLength( interest, "interest", 0, 60 );
           bValid = bValid && checkLength( date, "interest", 0, 60 );
           bValid = bValid && checkLength( time, "time", 0, 80 );
-          bValid = bValid && checkLength( place, "place", 0, 50 );
+          bValid = bValid && checkLength( place, "place", 0, 80 );
           bValid = bValid && checkRegexp( interest, /^[a-z]([0-9a-z_, !A-Z"])+$/i, "Incorrect Activity Input." );
-         bValid = bValid && checkRegexp(date, /^([0-9a-z-:/ ])+$/i, "Incorrect time");
-         bValid = bValid && checkRegexp(time, /^([0-9a-z-:/ ])+$/i, "Incorrect time");
-         bValid = bValid && checkRegexp( place, /^([0-9a-zA-Z,: ])+$/, "Invalid location." );
+          bValid = bValid && checkRegexp(date, /^([0-9a-z-:,/ ])+$/i, "Incorrect time");
+          bValid = bValid && checkRegexp(time, /^([0-9a-z-:,/ ])+$/i, "Incorrect time");
+          bValid = bValid && checkRegexp( place, /^([0-9a-zA-Z,: ])+$/, "Invalid location." );
     
-          if ( bValid ) {
-			$("form#eventForm").submit();
-            $( this ).dialog( "close" );
-          }
-        },
-        Cancel: function() {
+          if ( bValid ) 
+          {
+              $("form#eventForm").submit();
+              $( this ).dialog( "close" );
+		  }
+       },
+       Cancel: function() 
+       {
           $( this ).dialog( "close" );
-        }
-      },
-      close: function() {
-        allFields.val( "" ).removeClass( "ui-state-error" );
-      }
-    });
+       }
+   },
+   close: function() 
+   {
+      allFields.val( "" ).removeClass( "ui-state-error" );
+   }
+});
  
-    $( "#create-user" )
-      .button()
+
+$( "#create-user" )
+ .button()
       .click(function() {
         $( "#dialog-form" ).dialog( "open" );
       });
   });
-  </script>
+ </script>
+
 </head>
+
 <body>
 <br>
 <br>
 
-<!- map  ->
+<!----- map  -------->
   <div id="mapContainer" ></div>
+
+
 
 <!-- search bar -->
 <div class="light">
 <form action="/posts/search" method="get">
-<input type="text" name="interest" class="search rounded" style="margin-left:-60px;height:20px;width:180px;" placeholder="Search by interest"> 
-<input type="text" name="place" class="search square" style="margin-top:-38px; margin-left:200px; height:20px;width:180px;" placeholder="Search by Location">
+<input type="text" name="interest" class="search rounded" style="margin-left:-60px;height:20px;width:180px;" placeholder="Search by interest" autocomplete="on"> 
+<input type="text" name="place" class="search square" style="margin-top:-38px; margin-left:200px; height:20px;width:180px;" placeholder="Search by Location" autocomplete="on">
 
 
 <input class="participation" type="submit" name="search" value="Search Now" style= "position:absolute; margin-top:-40px; margin-left:450px; width:100px; height:35px;" >
@@ -196,14 +211,26 @@ function newDoc()
   <p class="validateTips">All form fields are required.</p>
   <form name="eventForm" id="eventForm" method="post" action="/posts/p_add">
   <fieldset>
+  
+  
+  
     <label for="interest">Activity</label>
-    <input type="text" style="width:300px;" name="interest" id="interest" value="Movie" class="text ui-widget-content ui-corner-all">
+    <img id="project-icon" src="../img/default.jpg" class="ui-state-default" alt="">
+    
+    <input type="text" style="width:250px;" name="interest" id="interest" class="text ui-widget-content ui-corner-all">
+    <input type="hidden" id="project-id">
+<p id="project-description"></p>
+    
+    
+    
+    
     <label for="date">Date</label>
-    <input type="text" style="width:100px; " name="date" id="date" value="<?= date("m/d/Y")?>"  class="text ui-widget-content ui-corner-all">
-    <input type="text" style="width:80px; postion:absolute; margin-left:140px; margin-top:-36px;" name="time" id="time" placeholder="Time?" class="text ui-widget-content ui-corner-all">
+    <input type="text" style="width:180px; " name="date" id="date" value="<?= date("D, M, y")?>"  class="text ui-widget-content ui-corner-all">
+    <input type="text" style="width:80px; postion:absolute; margin-left:200px; margin-top:-36px;" name="time" id="time" placeholder="Time?" class="text ui-widget-content ui-corner-all">
     
     <label for="place">Location</label>
-    <input type="text" style="width:300px;" name="place" id="place" value="Cambridge, MA" class="text ui-widget-content ui-corner-all">
+    <input type="text" style="width:300px;" name="place" id="place" placeholder="Enter the location"
+             onFocus="geolocate()" class="text ui-widget-content ui-corner-all">
     <br>
     
     <select>
@@ -265,16 +292,18 @@ function newDoc()
 <?php foreach($posts as $post): ?>
 
 <!-- each post -->
-<div id = "box" style="border: 2px solid black; background-color:e1d9da; font-size:14px; width:80%; border-radius: 8px; -moz-border-radius: 4px; -webkit-border-radius: 4px; margin-left:5%;">
+<hr style="width:90%;">
+
+<div id = "box" >
 
    <img src= "/uploads/<?=$post['picture'];?>" style = "position:relative; float:left; height:65px; width:65px;">    
     
     <!-- activity content -->
-    <div style="position:relative; text-align:center;">      
-    Activity: <strong > <?=$post['interest']?> </strong><br>
+    <div style="position:relative; text-align:left; margin-left:20%;">      
+    <strong id="activity">Activity:  <?=$post['interest']?> </strong><br>
     Time: <?=$post['date']?> <?=$post['time']?><br>
     Place: <?=$post['place']?> <br>
-    <time style="margin-left:2%; color:#BDBDBD;" datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
+    <time style="color:#BDBDBD;" datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
         <?=Time::display($post['created'])?>
     </time>
     </div>
@@ -308,8 +337,9 @@ function newDoc()
          
        </div>             
    </div>
-<br>
 <?php endforeach; ?>
+
+
 
 <script>
 
@@ -366,11 +396,143 @@ $('.jr-btn').click(function(e) {
 
 <script>
   $(function() {
-    $( "#date" ).datepicker();
+    $( "#date" ).datepicker({dateFormat: "D, M, y"});
   });
     
 </script>
 
-
-
 </div>
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------
+Google Address autocomplete API
+--------------------------------------------------------------------------------------------------------------------------------->
+    
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+ <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    
+<script>
+// This example displays an address form, using the autocomplete feature
+// of the Google Places API to help users fill in the information.
+
+var placeSearch, autocomplete;
+var componentForm = {
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
+
+function initialize() {
+  // Create the autocomplete object, restricting the search
+  // to geographical location types.
+  autocomplete = new google.maps.places.Autocomplete(
+      /** @type {HTMLInputElement} */(document.getElementById('place')),
+      { types: ['geocode'] });
+  // When the user selects an address from the dropdown,
+  // populate the address fields in the form.
+  
+}
+
+var place = autocomplete.getPlace();
+
+// [START region_geolocation]
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = new google.maps.LatLng(
+          position.coords.latitude, position.coords.longitude);
+      autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
+          geolocation));
+    });
+  }
+}
+// [END region_geolocation]
+
+</script>
+
+<body onload="initialize()">
+
+
+<style>
+  #project-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+  #project-icon {
+    float: left;
+    height: 32px;
+    width: 32px;
+  }
+  #project-description {
+    margin: 0;
+    padding: 0;
+  }
+  </style>
+  <script>
+  $(function() {
+    var projects = [
+      {
+        value: "Movie",
+        icon: "movie.png"
+      },
+      {
+        value: "TV",
+        icon: "TV.png"
+      },
+      {
+        value: "Beer", 
+        icon: "beer.png"
+      }
+    ];
+ 
+    $( "#interest" ).autocomplete({
+      minLength: 0,
+      source: projects,
+      focus: function( event, ui ) {
+        $( "#interest" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#interest" ).val( ui.item.label );
+        $( "#project-id" ).val( ui.item.value );
+        $( "#project-icon" ).attr( "src", "../img/" + ui.item.icon ); 
+        return false;
+      }
+    })
+    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.label + "</a>" )
+        .appendTo( ul );
+    };
+  });
+  </script> 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+

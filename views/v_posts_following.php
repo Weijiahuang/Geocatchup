@@ -1,33 +1,3 @@
-<style type="text/css">
-.button {
-	-moz-box-shadow:inset 0px 1px 0px 0px #c1ed9c;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #c1ed9c;
-	box-shadow:inset 0px 1px 0px 0px #c1ed9c;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #9dce2c), color-stop(1, #8cb82b) );
-	background:-moz-linear-gradient( center top, #9dce2c 5%, #8cb82b 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#9dce2c', endColorstr='#8cb82b');
-	background-color:#9dce2c;
-	-webkit-border-top-left-radius:6px;
-	-moz-border-radius-topleft:6px;
-	border-top-left-radius:6px;
-	-webkit-border-top-right-radius:6px;
-	-moz-border-radius-topright:6px;
-	border-top-right-radius:6px;
-	-webkit-border-bottom-right-radius:6px;
-	-moz-border-radius-bottomright:6px;
-	border-bottom-right-radius:6px;
-	-webkit-border-bottom-left-radius:6px;
-	-moz-border-radius-bottomleft:6px;
-	border-bottom-left-radius:6px;
-	text-indent:0;
-	border:1px solid #83c41a;
-	display:inline-block;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-</style>
-
 <div id='profilemenu'>
    <div id size="fontsize" style="color:white; font-size:40px; position:absolute; flow:left; margin-left:50px;">
 			<strong>   Spur!</strong>
