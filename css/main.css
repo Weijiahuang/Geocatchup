@@ -16,18 +16,43 @@ Map
 	top : 400px; left : 0px;
 }
 
-#activity
-{
-color: #0f90ba;
-font-size: 16px;
-font-weight: 600;
-	
+
+#profile {
+	color:white; 
+	text-decoration:none;
+	font-size:20px;
+	font-family:Arial;
+	position:relative; margin-left:25%;
 }
+
+#activity {
+	color: #0f90ba;
+	font-size: 16px;
+	font-weight: 600;	
+}
+
+#create-user {
+	font-size: 1.4em;
+}
+
+#sendmail {
+	position:relative;
+	float:right;
+	margin-top:-5%;
+	margin-right:-10%; 
+	}
 
 form{
 	width:500px;
 	margin:0 auto;
 }
+
+.navigation {
+	padding:0px; font-size:20px; font-family:Arial; position:relative; margin-left:2%; margin-top:-1px;
+	color: white;
+	text-decoration: none;
+}
+
 .search { 
 	padding:6px 15px 6px 30px;
 	margin:3px; 
@@ -39,7 +64,7 @@ input[type=text]{
 }
 
 .jr-btn {
-	position:relative; float:right; margin-top:-10%; margin-right:-5%; width:100px;
+	position:relative; float:right; margin-top:-20%; margin-right:-100%; width:100px;
 }
 
 .jr-btn-container {
@@ -139,6 +164,7 @@ body
  background-color: #ffffff; 
  background-image: url('/img/background_paper.jpg');
  link="white";
+ font-family: 'Alegreya Sans', sans-serif;
 }
 #signin
 {

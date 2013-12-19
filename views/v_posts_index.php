@@ -175,16 +175,11 @@ $( "#create-user" )
   });
  </script>
 
-</head>
-
-<body>
 <br>
 <br>
 
 <!----- map  -------->
   <div id="mapContainer" ></div>
-
-
 
 <!-- search bar -->
 <div class="light">
@@ -210,9 +205,7 @@ $( "#create-user" )
 <div class="pop_windows" id="dialog-form" title="Make an event">
   <p class="validateTips">All form fields are required.</p>
   <form name="eventForm" id="eventForm" method="post" action="/posts/p_add">
-  <fieldset>
-  
-  
+  <fieldset>  
   
     <label for="interest">Activity</label>
     <img id="project-icon" src="../img/default.jpg" class="ui-state-default" alt="">
@@ -222,10 +215,9 @@ $( "#create-user" )
 <p id="project-description"></p>
     
     
-    
-    
+
     <label for="date">Date</label>
-    <input type="text" style="width:180px; " name="date" id="date" value="<?= date("D, M, y")?>"  class="text ui-widget-content ui-corner-all">
+    <input type="text" style="width:180px; " name="date" id="date" value="<?=date("D,F d,Y")?>"  class="text ui-widget-content ui-corner-all">
     <input type="text" style="width:80px; postion:absolute; margin-left:200px; margin-top:-36px;" name="time" id="time" placeholder="Time?" class="text ui-widget-content ui-corner-all">
     
     <label for="place">Location</label>
@@ -254,13 +246,12 @@ $( "#create-user" )
         <?php if($user): ?>
             <a style="color:white; text-decoration:none; font-size:20px; font-family:Arial; float:right; margin-right:20px;" href='/users/logout'>Logout</a>
            
-            <a style="color:white; text-decoration:none; font-size:20px; font-family:Arial; position:relative; margin-left:25%;" href='/users/profile'>Profile</a>
-            
-			<button id ="create-user" style="padding:0px; font-size:15px; font-family:Arial; position:relative; margin-left:2%; margin-top:-1px;" >Add a post</button>
-			<a style="color:white; text-decoration:none; font-size:20px; font-family:Arial; position:relative; margin-left:2%;" href='/posts/index'>View post<a>
-			<a style="color:white; text-decoration:none; font-size:20px; font-family:Arial; position:relative; margin-left:2%" href='/posts/users'>Users<a>
-			<a style="color:white; text-decoration:none; font-size:20px; font-family:Arial; position:relative; margin-left:2%;" href ='/posts/followers'> Followers			<a>
-			<a style="color:white; text-decoration:none; font-size:20px; font-family:Arial; position:relative; margin-left:2%;" href ='/posts/following'> Following	<a>
+            <a id ="profile" href='/users/profile'>Profile</a>            
+			<button id ="create-user" class="navigation">  Add a post</button>
+			<a  class="navigation" href='/posts/index'>View post<a>
+			<a class="navigation" href='/posts/users'>Users<a>
+			<a class="navigation" href ='/posts/followers'> Followers			<a>
+			<a class="navigation" href ='/posts/following'> Following	<a>
         <!-- Menu options for users who are not logged in -->
         <?php else: ?>
 
@@ -299,7 +290,7 @@ $( "#create-user" )
    <img src= "/uploads/<?=$post['picture'];?>" style = "position:relative; float:left; height:65px; width:65px;">    
     
     <!-- activity content -->
-    <div style="position:relative; text-align:left; margin-left:20%;">      
+    <div style="position:relative; text-align:left; margin-left:15%;">      
     <strong id="activity">Activity:  <?=$post['interest']?> </strong><br>
     Time: <?=$post['date']?> <?=$post['time']?><br>
     Place: <?=$post['place']?> <br>
@@ -333,7 +324,7 @@ $( "#create-user" )
     <?php endif; ?>
 
                        
-    <a style="position:relative; float:right; margin-top:-5%; margin-right:5%; " href="mailto:<?=$post['email']?>?Subject=[Spur]%20I%20want%20to%20join%20you" target="_top">Send Mail</a>
+    <a id="sendmail" href="mailto:<?=$post['email']?>?Subject=[Spur]%20I%20want%20to%20join%20you" target="_top">Send Mail</a>
          
        </div>             
    </div>
@@ -396,7 +387,7 @@ $('.jr-btn').click(function(e) {
 
 <script>
   $(function() {
-    $( "#date" ).datepicker({dateFormat: "D, M, y"});
+    $( "#date" ).datepicker({dateFormat: "D MM dd, "});
   });
     
 </script>
