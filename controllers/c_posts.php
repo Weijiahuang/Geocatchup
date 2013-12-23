@@ -215,23 +215,23 @@ class posts_controller extends base_controller {
     		
     	$q = "SELECT *
     		FROM users_users
-    		WHERE user_id_followed = ".$this->user->user_id;
-    		
-    	$f = "SELECT *
-    		FROM users_users
     		WHERE user_id = ".$this->user->user_id;
     		
-    	$connections = DB::instance(DB_NAME)->select_array($f, 'user_id_followed');
+    	$connections = DB::instance(DB_NAME)->select_array($q, 'user_id_followed');
 
-
-    	$following = DB::instance(DB_NAME)->select_array($q, 'user_id');
-    	
+		$f = "SELECT * FROM users_users WHERE user_id_followed = ".$this->user->user_id;		
+		
+		$followers = DB::instance(DB_NAME)->select_array($f, 'user_id');
+		
     	$this->template->content->connections = $connections;
-    	$this->template->content->following = $following;
+    	$this->template->content->followers = $followers;
     	$this-> template-> content-> users = $users;
     	
     	echo  $this->template;
     }    
+    
+    
+    
     
         public function following() 
     {

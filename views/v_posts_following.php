@@ -1,21 +1,20 @@
 <div id='profilemenu'>
-   <div id size="fontsize" style="color:white; font-size:40px; position:absolute; flow:left; margin-left:50px;">
+   <div id="brandname">
 			<strong>   Spur!</strong>
 		</div>
 	<div id ="mainpage">
         <!-- Menu for users who are logged in -->
         <?php if($user): ?>
-            <a style="color:white; text-decoration:none; font-size:20px; font-family:Arial; float:right; margin-right:20px;" href='/users/logout'>Logout</a>
+            <a id="logout">Logout</a>
            
-            <a style="color:white; text-decoration:none; font-size:20px; font-family:Arial; position:relative; margin-left:30%;" href='/users/profile'>Profile</a>
-            
-			<a style="color:white; text-decoration:none; font-size:20px; font-family:Arial; position:relative; margin-left:2%;" href='/posts/index'><strong>View post</strong><a>
-			<a style="color:white; text-decoration:none; font-size:20px; font-family:Arial; position:relative; margin-left:2%" href='/posts/users'>Users<a>
-			<a style="color:white; text-decoration:none; font-size:20px; font-family:Arial; position:relative; margin-left:2%;" href ='/posts/followers'> Followers		<a>
-			<a style="color:white; text-decoration:none; font-size:20px; font-family:Arial; position:relative; margin-left:2%;" href ='/posts/following'> Following	<a>
+            <a id ="profile" href='/users/profile'>Profile						</a>            
+			<a  class="navigation" href='/posts/index'>View post				</a>
+			<a class="navigation" href='/posts/users'>Users						</a>
+			<a class="navigation" href ='/posts/followers'> Followers			</a>
+			<a class="navigation" href ='/posts/following'> Following			</a>
         <!-- Menu options for users who are not logged in -->
         <?php else: ?>
-        
+
             <a href='/users/signup'>Sign Up</a>
             <a href='/users/index'>Log In</a>
         <?php endif; ?>
@@ -23,6 +22,7 @@
      </div>
 </div>
 
+<br>
 <br>
 <br>
 <center><h1> These are the people you are following </h1></center>
@@ -41,17 +41,22 @@
     <?php if(isset($connections[$user['user_id']])): ?>
     <div class="box" >
 	
-	<img src= "/uploads/<?=$user['picture'];?>" style = "position:relative; float:left; height:100px; width:100px;"><br>
+	<img src= "/uploads/<?=$user['picture'];?>"><br>
     <strong style="color:#000000"><?=$user['first_name']?> <?=$user['last_name']?></strong>
-	<div style="position:relative; text-align:center; margin-top:5%;">          		
+	<div id="position">          		
     	    		<!-- Print this user's name -->
     	    		<a href='/posts/unfollow1/<?=$user['user_id']?>'>
-    	    		<input type='Submit' value='Unfollow' class = "button"></a>
+    	    		<input type='Submit' value='Unfollow' id="unfollow1"  class = "button"></a>
     		</div>
     </div
 	<?php endif; ?>
-
 <?php endforeach; ?>
-
-
 </div>
+
+<style >
+#unfollow1{
+	position: absolute;
+	margin-top: -25px;
+	margin-left: -40px;
+}
+</style>

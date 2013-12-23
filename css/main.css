@@ -1,19 +1,121 @@
-/*
-Map 
-*/
+/* sign in box  */
+
+.signupinput {
+	width:300px; height:25px;
+	font-size: inherit;
+	text-color:black;
+}
+
+.signininput {
+	width:200px;
+	height:20px;
+	float: left;
+}
+
+#password1 {
+	position:absolute;
+	margin-top:-17px;
+	margin-left: 16.8%;
+}
+
+#forget	{
+	text-decoration:none;
+	color:blue;
+	margin-left: 24%;
+}
+
+
+/* Map */
 
 #mapContainer {
     height: 220px  !important;
     width: 16% !important;
     border:5px solid black;
     position: absolute;
-    top : 333px; left : 2.8%;
+    top : 345px; left : 2.8%;
 }
 
+/* pop up windows */
 
-#logout{
-	position: relative;
-	top : 400px; left : 0px;
+label, input { 
+    display:block;
+}
+    
+input.text {
+    margin-bottom:12px;
+    width:95%;
+    padding: .4em;
+}
+    
+fieldset { 
+    padding:0;
+    border:0;
+    margin-top:25px;
+}
+   
+h1 { 
+    font-size: 1.2em;
+    margin: .6em 0;
+}
+
+.ui-dialog .ui-state-error { 
+    padding: .3em;
+}
+
+.validateTips {
+    border: 1px solid transparent;
+    padding: 0.3em;
+}
+
+.pop_windows
+{
+	font-size: 0.6em;
+}
+
+#interest
+{
+width: 60%;
+}
+
+#time{
+	 width:80px;
+	 postion:absolute;
+	 margin-left:200px;
+	 margin-top:-36px;
+}
+#date{
+	width:180px;
+}
+
+#place{
+	width:335px;
+}
+
+/*auto complete */
+#project-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+  #project-icon {
+    float: left;
+    height: 32px;
+    width: 32px;
+  }
+  #project-description {
+    margin: 0;
+    padding: 0;
+  }
+
+/* top menu */
+
+#logout {
+	color:white;
+	text-decoration:none;
+	font-size:20px;
+	font-family:Arial;
+	float:right;
+	margin-right:20px;
 }
 
 
@@ -22,17 +124,147 @@ Map
 	text-decoration:none;
 	font-size:20px;
 	font-family:Arial;
+	margin-left:30%;
 	position:relative; margin-left:25%;
 }
 
-#activity {
-	color: #0f90ba;
-	font-size: 16px;
-	font-weight: 600;	
+.shape {
+    height: 100px;
+    width: auto;
 }
 
+
+
+/*search bar */
+#searchinterest {
+    margin-left:-60px;
+    height:20px;
+    width:180px;
+}
+
+#searchlocation {
+	margin-top:-38px;
+	margin-left:200px;
+    height:20px;
+    width:180px;
+}
+
+#searchbutton {
+	position:absolute;
+    margin-top:-40px;
+    margin-left:450px;
+    width:100px;
+    height:35px;
+}
+
+
+
+/* profile picture */
+
+#profilepicture {
+	height:192px;
+    width:16%;
+    position:absolute;
+    margin-top:-20px;
+    margin-left:2.8%;
+    border: 5px solid black;
+}
+
+/*
+Posts area styling
+*/
+
+
+/* posts windows */
+#windows
+{
+	position:absolute;
+	margin-left:20%;
+	margin-top: -60px;
+	height: 100%;
+	width:60%;
+	overflow:scroll;
+	background-color:white;
+    border-radius: 8px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    z-index: auto;
+    text-align: center;      
+}
+
+/* post picture */
+#postpicture {
+	position:relative;
+    margin-top:-4px;
+    float:left;
+    height:85px;
+    width:85px;
+}
+
+/* windows title */
+#windows h1 {
+	font-family:Arial;
+    font-size:20px;
+}
+
+#windows hr {
+	width:90%;
+}
+
+
+/*post name*/
+#name { 
+    postion:relative;
+    overflow:hidden;
+}
+
+
+#activity {
+	color: #0f90ba;
+	font-size: 21px;
+	font-weight: 400;	
+}
+
+/*activity font */
+#eventfont {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	line-height: 22px;
+	font-size: 13px;
+	font-weight: 300;
+	position:relative; 
+	text-align:left; 
+	margin-left:20%;
+}
+
+
+time {
+	color:#BDBDBD;
+}
+
+#username {
+	color:#0101DF;
+    font-size:17px;
+    font-family:'Bilbo Swash Caps', cursive; 
+    float:bottom; 
+    float:left; 
+    margin-left: 13px; 
+    margin-top: -4px;
+}
+
+#remove {
+	background:#459dcd;
+}
+
+
+html, body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+
+
 #create-user {
-	font-size: 1.4em;
+	font-size: 1.0em;
 }
 
 #sendmail {
@@ -60,7 +292,7 @@ form{
 }
 
 input[type=text]{
-	color:#bcbcbc;
+	color:black;
 }
 
 .jr-btn {
@@ -73,10 +305,10 @@ input[type=text]{
 
 .fol-btn
 {
-	position: relative; margin-top: 10%; float:right; margin-right: 60%; width: 80px;
+	position: relative; float:right; margin-right: 60%; width: 80px;
 }
 
-.participation,.button
+.participation,.button,button
 {
 	moz-box-shadow:inset 0px 1px 0px 0px #c1ed9c;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #c1ed9c;
@@ -159,6 +391,11 @@ input[type=button], input[type=button]:hover {
 	padding-left:50px;
 }
 
+#checkbox
+{
+float:left;
+}
+
 body
 {
  background-color: #ffffff; 
@@ -166,14 +403,16 @@ body
  link="white";
  font-family: 'Alegreya Sans', sans-serif;
 }
+
 #signin
 {
-padding-top: 5px;
+margin-top:-7px; 
 height:auto;
 width:auto;
 float:right;
 color:white;
 }
+
 
 #header
 {
@@ -215,6 +454,37 @@ box-shadow: 0 1px 4px #ccc;
 
 }
 
+#logout {
+    color:white;
+    text-decoration:none;
+    font-size:20px;
+    font-family:Arial;
+    float:right;
+    margin-right:20px;
+    }
+
+.group {
+   margin-top:0px;
+   float: left;
+   margin-left: 5%;
+   background: transparent;
+   width: 93px;
+   padding: 3px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 25px;
+}
+
+#brandname {
+	color: #ffffff;
+	font-size:40px;
+	position:absolute;
+	float: :left;
+	margin-left:50px;
+}
+
 #head1
 {
 position:absolute;
@@ -224,9 +494,24 @@ font-family: Arial;
 
 }
 
-.box
-{
-border: 2px solid black; background-color:white; font-size:14px; width:40%; border-radius: 8px; -moz-border-radius: 4px; -webkit-border-radius: 4px; margin-left:5%; float:left; margin-bottom:10px;
+.box {
+	border: 2px solid #a2a0a0;
+    background-color:white;
+    font-size:14px; width:45%;
+    border-radius: 8px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    margin-left:5%;
+    float:left;
+    margin-bottom:10px;
+	margin: 10px;
+}
+
+img {
+	position:relative;
+    margin:10px;
+    float:left;
+    height:80px; width:80px;
 }
 
 iframe
@@ -254,8 +539,10 @@ width:auto;
 background-color: white;
 }
 
-#box{
+#box
+{
 background-color:e1d9da; font-size:14px; width:80%; border-radius: 8px; -moz-border-radius: 4px; -webkit-border-radius: 4px; margin-left:5%;
+
 }
 
 #logo
@@ -283,21 +570,6 @@ color:#ffffff;
     -webkit-border-radius: 4px;    
 }
 
-#windows
-{
-	position:absolute;
-	margin-left:20%;
-	margin-top: -50px;
-	height: 100%;
-	width:60%;
-	overflow:scroll;
-	background-color:white;
-    border-radius: 8px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    z-index: auto;
-    text-align: center;      
-}
 .windows
 {
 height:80%; width:60%; background-color:white;
@@ -305,7 +577,9 @@ height:80%; width:60%; background-color:white;
 
 .search_rounded{
 
-margin-left:-60px;height:30px;width:80%;
+	margin-left:-60px;
+	height:30px;
+	width:80%; 
 }
 
 input {
@@ -323,3 +597,42 @@ input:focus {
     -moz-box-shadow: 0px 0px 5px #4195fc;
     -webkit-box-shadow: 0px 0px 5px #4195fc;  
 }​
+
+.uploadtitle
+{
+	margin-top: 800px;
+}
+#uploadpicture 
+{
+	height:200px;
+	width:200px;
+	margin-left: 33%;
+}
+
+
+#submitbutton
+{
+	position: absolute;
+	margin-top: -23px;
+	margin-left: 7%;
+}
+
+#uploadfile
+{
+	margin-left: 25%;
+}
+
+#position{
+	position:relative;
+    text-align:center;
+    margin-top:12%;
+}
+
+
+#userssearch{
+	float:right;
+	height: 35px;
+	margin-right: 50px ;
+	margin-top: -35px;	
+}
+
