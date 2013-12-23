@@ -12,7 +12,7 @@
       <label for="email1"> Email</label> 
       <input class="signininput" type="text" id="email1" name="email1" placeholder="Email">
       
-      <label id="password1" for="password1">Password</label>
+      <label id="password2" for="password1">Password</label>
       <input class="signininput" id="password1" type="password" name="password1" placeholder="Password"> &nbsp;&nbsp;
       
       <input class="participation"  type="Submit" value="Log in" >
