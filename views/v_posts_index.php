@@ -1,9 +1,7 @@
 <br>
 <br>
-<!--------- map  -------->
+<!-- map  -->
 <div id="mapContainer" ></div>
-
-
 
 <!-- search bar -->
 <div class="light">
@@ -15,15 +13,10 @@
 </div>
 
 
-<!--prfoile picture  -->
+<!-- prfoile picture  -->
 <img id="profilepicture" src= "/uploads/<?=$user->picture;?>" ><br>
- 
- 
- 
- 
-<!---------------------------------------------------------------------------------------------------------------------------------------Pop up windows
----------------------------------------------------------------------------------------------------------------------------------------->
 
+<!-- Pop up windows -->
  <div class="pop_windows" id="dialog-form" title="Make an event">
    <p class="validateTips">All form fields are required.</p>
    <form name="eventForm" id="eventForm" method="post" action="/posts/p_add">
@@ -50,9 +43,7 @@
    </form>
 </div>
  
-<!---------------------------------------------------------------------------------------------------------------------------------------
-Top menu
----------------------------------------------------------------------------------------------------------------------------------------->
+<!-- Top menu -->
  
 <div id='profilemenu' >
    <div id ="brandname" >
@@ -79,9 +70,7 @@ Top menu
 <br>
 
 
-<!---------------------------------------------------------------------------------------------------------------------------------------
-bulletin board
----------------------------------------------------------------------------------------------------------------------------------------->
+<!-- bulletin board -->
 
 <div id ='windows'>
     <h1 >Current Posts:</h1>
@@ -102,7 +91,7 @@ bulletin board
 		  </div>     
           <div id="name" >
               <div id="username" ><?=$post['first_name']?> <?=$post['last_name']?> </div>&nbsp;&nbsp;&nbsp;&nbsp;
-                </time>
+           
 	          </div>			
           <div>
       
@@ -129,9 +118,7 @@ bulletin board
 
 
 
-<!--------------------------------------------------------------------------------------------------------------------------------
-Google Address autocomplete API
---------------------------------------------------------------------------------------------------------------------------------->
+<!-- Google Address autocomplete API -->
     
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
