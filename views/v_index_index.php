@@ -9,11 +9,13 @@
 <div id="signin">
   <br>
    <form method ='POST' action = '/users/p_login'>
-      <label for="email1">Email</label> 
-      <input class="signininput" type="text" name="email1" placeholder="Email">
+      <label for="email1"> Email</label> 
+      <input class="signininput" type="text" id="email1" name="email1" placeholder="Email">
+      
       <label id="password1" for="password1">Password</label>
-      <input class="signininput" type="password" name="password1" placeholder="Password"> &nbsp;&nbsp;
-      <input class="participation" type="Submit" value="Log in" >
+      <input class="signininput" id="password1" type="password" name="password1" placeholder="Password"> &nbsp;&nbsp;
+      
+      <input class="participation"  type="Submit" value="Log in" >
       <br>
       <?php if(isset($error)): ?>	
 	    	<div class='error'>
@@ -37,8 +39,7 @@ Locate and connect your friends. Instantly.
 
 <!-- Youtube video -->
 
-<iframe width="420" height="315" src="//www.youtube.com/embed/4hlJPfq8zdw" frameborder="0" allowfullscreen></iframe>
-
+<iframe src="//www.youtube.com/embed/4hlJPfq8zdw" allowfullscreen></iframe>
 
 
 <!--Singup form-->
@@ -47,7 +48,7 @@ Locate and connect your friends. Instantly.
 
 <form method = 'POST' action = '/users/p_signup'>
 	<input class="signupinput" type = 'text' name = 'first_name' placeholder="First name"> <br> 
-	<input class="signupinput"type ='text' name = 'last_name' placeholder="Last name"><br>
+	<input class="signupinput" type ='text' name = 'last_name' placeholder="Last name"><br>
 	<input class="signupinput" id="email" type ='text' name = 'email' placeholder="Email"><br>
 	<input class="signupinput" type ='password' name = 'password' placeholder="Password">
 	<p>
@@ -70,4 +71,4 @@ Locate and connect your friends. Instantly.
 	<input class="participation" type = 'submit' value = 'Join now' style="width:300px; height:30px;"> <br>
 </form>
 
-<div>
+</div>
