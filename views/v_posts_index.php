@@ -22,7 +22,7 @@
    <form name="eventForm" id="eventForm" method="post" action="/posts/p_add">
       <fieldset>  
       	<label for="interest">Activity</label>
-	  	<img id="project-icon" style="margin:0px;" src="../img/default.jpg" class="ui-state-default" alt="">
+	  	<img id="project-icon"  src="../img/default.jpg" class="ui-state-default" alt="">
 	  	<input type="text" name="interest" id="interest" class="text ui-widget-content ui-corner-all interest">
 	  	<input type="hidden" id="project-id">
 	  	<p id="project-description"></p>
@@ -32,8 +32,25 @@
         <label for="place">Location</label>
         <input type="text" name="place" id="place" placeholder="Enter the location"
              onFocus="geolocate()" class="text ui-widget-content ui-corner-all">
+        
+        <label for="moreinfo">More info (Optional)</label>
+        <input type="text" name="content" id="moreinfo" placeholder="Event description"
+		class="text ui-widget-content ui-corner-all">    
+            
          <br>
+         Event available to
+        <select name="group_category">
+         <option value="Everyone">All the followers</option>
+         <option value="Public">Public</option>
+
+         <option value="Friends">Friends</option>
+         <option value="Family">Family</option>
+         <option value="Acquaintance">Acquaintance</option>
+       </select>
+       
+        Send email to 
         <select>
+        <option value=""> </option>
          <option value="Everyone">Everyone</option>
          <option value="Friends">Friends</option>
          <option value="Family">Family</option>
@@ -55,7 +72,7 @@
             <a id="logout" href='/users/logout'>Logout</a>       
             <a id ="profile" href='/users/profile'>Profile</a>            
 			<button id ="create-user" class="navigation">  Add a post</button>
-			<a  class="navigation" href='/posts/index'>View post<a>
+			<a  class="navigation" href='/posts/index'>View posts<a>
 			<a class="navigation" href='/posts/users'>Users<a>
 			<a class="navigation" href ='/posts/followers'> Followers			<a>
 			<a class="navigation" href ='/posts/following'> Following	<a>

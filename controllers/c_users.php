@@ -227,7 +227,20 @@ class users_controller extends base_controller {
     		$this->template->title = " Profile";
     		
     		$view->user_name = $user_name;
-    		# Render View
+    		
+    		$q="SELECT * FROM posts INNER JOIN users_posts ON posts.post_id = users_posts.post_id_followed 
+    		WHERE users_posts.user_id = ".$this->user->user_id;
+    		
+    		
+			$eventsattendings = DB::instance(DB_NAME)->select_rows($q);
+    		
+    		
+    		# Pass data to the View
+			$this->template->content->eventsattendings = $eventsattendings;
+
+
+
+       		# Render View
     		echo $this-> template ;
     	}
     }

@@ -5,7 +5,7 @@
 	<div id ="mainpage">
         <!-- Menu for users who are logged in -->
         <?php if($user): ?>
-            <a id="logout">Logout</a>
+            <a id="logout" href="/users/logout">Logout</a>
            
             <a id ="profile" href='/users/profile'>Profile						</a>            
 			<a  class="navigation" href='/posts/index'>View post				</a>

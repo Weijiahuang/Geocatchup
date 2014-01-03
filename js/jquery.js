@@ -91,8 +91,8 @@ $('.fol-btn').click(function(e) {
  
     $( "#dialog-form" ).dialog({
       autoOpen: false,
-      height: 400,
-      width: 400,
+      height: 500,
+      width: 500,
       modal: true,
       buttons: {
         "Post": function() {
@@ -335,4 +335,3 @@ function geolocate() {
   }
 }
 // [END region_geolocation]
-

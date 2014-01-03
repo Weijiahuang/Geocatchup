@@ -35,12 +35,30 @@ class posts_controller extends base_controller {
         # Insert
         # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
         DB::instance(DB_NAME)->insert('posts', $_POST);
+
+		/*
+			
+		Sending group emails
+		$g ='SELECT *
+    		FROM users_users
+    		WHERE user_id_followed = '.$this->user->user_id.' 
+    		AND users_users.group = '.$_POST['group_category'].' 
+    		AND users_users.user_id_followed = '.$this->user->user_id;
+    	
+    	$group = DB::instance(DB_NAME)->select_array($g,'user_id');
+		
+		$to = $user_details["email"] ;
+		$subject = " $firstname $lastname wants to join you";	
+		$message = "Your friend $firstname $lastname has said he(she) is joining your event.";
+		$from = "$email";
+		$headers = "From:" . $from;
+		mail($to,$subject,$message,$headers);
+		
+		*/
+			        
+        Router::redirect('/posts/index');
         
-	        Router::redirect('/posts/index');
-        
-        # Quick and dirty feedback
-        echo "Your post has been added. <a href='/posts/add'>Add another</a>";
-    }
+     }
     
     public function search()
    {
@@ -72,7 +90,7 @@ class posts_controller extends base_controller {
 				WHERE users_users.user_id = '.$this->user->user_id.' 
 				AND posts.interest like "%'.$search_interest.'%"
 				AND posts.place like "%'.$search_place.'%" 
-				ORDER BY posts.created DESC';
+				AND users_users.group = posts.group_category ORDER BY posts.created DESC';
 			
 			# Run the query, store the results in the variable $posts
 			$posts = DB::instance(DB_NAME)->select_rows($q);
@@ -152,7 +170,8 @@ class posts_controller extends base_controller {
             ON posts.user_id = users_users.user_id_followed
         INNER JOIN users 
             ON posts.user_id = users.user_id
-        WHERE users_users.user_id = '.$this->user->user_id.' ORDER BY posts.created DESC';
+        WHERE users_users.user_id = '.$this->user->user_id.'
+        AND users_users.group = posts.group_category ORDER BY posts.created DESC';
       
 
     # Run the query, store the results in the variable $posts
@@ -167,7 +186,7 @@ class posts_controller extends base_controller {
 	
 	$join_connections = DB::instance(DB_NAME)->select_array($q, 'post_id_followed');
 	
-
+	
     # Pass data to the View
     $this->template->content->posts = $posts;
     
@@ -308,8 +327,6 @@ class posts_controller extends base_controller {
         "post_id_followed" => $_POST['id']
         );
         
-        
-	#KIERAN
 	     	
 	$q = "SELECT users.email	 	
 	     FROM posts
@@ -352,6 +369,7 @@ class posts_controller extends base_controller {
 //	Router::redirect("/posts/index");
 
 	}
+	
 	
 }
 

@@ -76,22 +76,34 @@ h1 {
 
 #interest
 {
-width: 60%;
+width: 74%;
+height:15px;
+margin-top: 5px;
 }
 
 #time{
 	 width:80px;
 	 postion:absolute;
-	 margin-left:200px;
-	 margin-top:-36px;
+	 margin-left:55%;
+	 margin-top:-38px;
+	 height: 16px;
 }
 #date{
-	width:180px;
+	width:50%;
+	height: 16px;
 }
 
 #place{
-	width:335px;
+	width:80%;
+	height: 16px;
 }
+
+#moreinfo{
+	width:80%;
+	height:16px;
+}
+
+
 
 /*auto complete */
 #project-label {
@@ -101,8 +113,9 @@ width: 60%;
   }
   #project-icon {
     float: left;
-    height: 32px;
-    width: 32px;
+    height: 26px;
+    width: 26px;
+    margin-left:0px; 
   }
   #project-description {
     margin: 0;
@@ -138,7 +151,7 @@ width: 60%;
 
 
 /*search bar */
-#searchinterest {
+	#searchinterest {
     margin-left:-60px;
     height:20px;
     width:180px;
@@ -401,7 +414,7 @@ float:left;
 body
 {
  background-color: #ffffff; 
- background-image: url('/img/background_paper.jpg');
+	 background-image: url('/img/background_paper.jpg');
  link="white";
  font-family: 'Alegreya Sans', sans-serif;
 }
@@ -511,10 +524,14 @@ font-family: Arial;
 
 img {
 	position:relative;
-    margin:10px;
+    margin-left:15px;
+    margin-top: 5px;
     float:left;
-    height:80px; width:80px;
+    height:80px;
+    width:80px;
 }
+
+
 
 iframe
 {
