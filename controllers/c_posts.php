@@ -56,8 +56,7 @@ class posts_controller extends base_controller {
 			{							
 				$to = $value;		
 				$subject = "Would you like to join? ";	
-				$message = 'Event info:<br> Activity: "'.$_POST['interest'].'" <br> Time: "'.$_POST['time'].'" <br> Place: "'.$_POST['place'].'" <br>';
-				echo $message;
+				$message = 'Event info: Activity: '.$_POST['interest'].' Time: '.$_POST['time'].'  Place: '.$_POST['place'].' ';
 				$from = "$useremail";
 				$headers = "From:" . $from;
 				mail($to,$subject,$message,$headers);
