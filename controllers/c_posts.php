@@ -32,7 +32,7 @@ class posts_controller extends base_controller {
         $_POST['modified'] = Time::now();
         $_POST['picture']= $this->user->picture;
         
-        $data = Array('interest'=> $_POST['interest'],'date'=>$_POST['date'],'place'=>$_POST['place'],'group_category'=>$_POST['group_category'],'user_id'=>$_POST['user_id'], 'created'=>$_POST['created'], 'modified'=>$_POST['modified'],'picture'=>$_POST['picture']);
+        $data = Array('interest'=> $_POST['interest'],'date'=>$_POST['date'],'time'=> $_POST['date'], 'place'=>$_POST['place'],'group_category'=>$_POST['group_category'],'user_id'=>$_POST['user_id'], 'created'=>$_POST['created'], 'modified'=>$_POST['modified'],'picture'=>$_POST['picture']);
         		
         # Insert
         # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
@@ -55,8 +55,9 @@ class posts_controller extends base_controller {
 			foreach ($emails as $key => $value) 
 			{							
 				$to = $value;		
-				$subject = " group email testing";	
-				$message = "Event info";
+				$subject = "Would you like to join? ";	
+				$message = 'Event info:<br> Activity: "'.$_POST['interest'].'" <br> Time: "'.$_POST['time'].'" <br> Place: "'.$_POST['place'].'" <br>';
+				echo $message;
 				$from = "$useremail";
 				$headers = "From:" . $from;
 				mail($to,$subject,$message,$headers);
