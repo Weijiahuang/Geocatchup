@@ -49,13 +49,25 @@
        </select>
        
         Send email to 
-        <select>
+        <select name="group">
         <option value=""> </option>
          <option value="Everyone">Everyone</option>
          <option value="Friends">Friends</option>
          <option value="Family">Family</option>
          <option value="Acquaintance">Acquaintance</option>
        </select>
+       
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       	Send SMS to &nbsp;
+       	<select name="groupmessage">
+        <option value=""> </option>
+         <option value="Everyone">Everyone</option>
+         <option value="Friends">Friends</option>
+         <option value="Family">Family</option>
+         <option value="Acquaintance">Acquaintance</option>
+       </select>
+       
+       
       </fieldset>
    </form>
 </div>

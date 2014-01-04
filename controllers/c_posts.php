@@ -1,6 +1,6 @@
 <?php
-class posts_controller extends base_controller {
 
+class posts_controller extends base_controller {
     public function __construct() {
        parent::__construct();
 
@@ -30,34 +30,40 @@ class posts_controller extends base_controller {
 	    # Unix timestamp of when this post was created / modified
       	$_POST['created']  = Time::now();
         $_POST['modified'] = Time::now();
-        $_POST['picture']= $this->user->picture;	
-		
+        $_POST['picture']= $this->user->picture;
+        
+        $data = Array('interest'=> $_POST['interest'],'date'=>$_POST['date'],'place'=>$_POST['place'],'group_category'=>$_POST['group_category'],'user_id'=>$_POST['user_id'], 'created'=>$_POST['created'], 'modified'=>$_POST['modified'],'picture'=>$_POST['picture']);
+        		
         # Insert
         # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
-        DB::instance(DB_NAME)->insert('posts', $_POST);
-
-		/*
+        DB::instance(DB_NAME)->update_or_insert_row('posts', $data);
 			
-		Sending group emails
-		$g ='SELECT *
-    		FROM users_users
-    		WHERE user_id_followed = '.$this->user->user_id.' 
-    		AND users_users.group = '.$_POST['group_category'].' 
-    		AND users_users.user_id_followed = '.$this->user->user_id;
+		# Sending group emails
+		if($_POST['group'])
+		{
+			$g ='SELECT users.user_id,users.email
+    			FROM users
+    			INNER JOIN users_users
+    			ON users.user_id = users_users.user_id		
+				WHERE users_users.group = "'.$_POST['group'].'" 
+				AND users_users.user_id_followed = '.$this->user->user_id;
+				
     	
-    	$group = DB::instance(DB_NAME)->select_array($g,'user_id');
+			$emails = DB::instance(DB_NAME)->select_kv($g, 'user_id', 'email');
+			$useremail = $this->user->email;
 		
-		$to = $user_details["email"] ;
-		$subject = " $firstname $lastname wants to join you";	
-		$message = "Your friend $firstname $lastname has said he(she) is joining your event.";
-		$from = "$email";
-		$headers = "From:" . $from;
-		mail($to,$subject,$message,$headers);
-		
-		*/
+			foreach ($emails as $key => $value) 
+			{							
+				$to = $value;		
+				$subject = " group email testing";	
+				$message = "Event info";
+				$from = "$useremail";
+				$headers = "From:" . $from;
+				mail($to,$subject,$message,$headers);
+			}		
+		}
 			        
         Router::redirect('/posts/index');
-        
      }
     
     public function search()
