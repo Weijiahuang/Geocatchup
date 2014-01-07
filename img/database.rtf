@@ -1,0 +1,202 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 -- phpMyAdmin SQL Dump\
+-- version 3.5.7\
+-- http://www.phpmyadmin.net\
+--\
+-- Host: localhost\
+-- Generation Time: Jan 05, 2014 at 04:48 AM\
+-- Server version: 5.5.29\
+-- PHP Version: 5.4.10\
+\
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";\
+SET time_zone = "+00:00";\
+\
+--\
+-- Database: `geohango_p4_geohangout_biz`\
+--\
+\
+-- --------------------------------------------------------\
+\
+--\
+-- Table structure for table `posts`\
+--\
+\
+CREATE TABLE `posts` (\
+  `post_id` int(11) NOT NULL AUTO_INCREMENT,\
+  `created` int(11) NOT NULL,\
+  `modified` int(11) NOT NULL,\
+  `user_id` int(11) NOT NULL COMMENT 'FK',\
+  `group_category` varchar(64) NOT NULL,\
+  `picture` varchar(256) NOT NULL,\
+  `content` text NOT NULL,\
+  `interest` varchar(256) NOT NULL,\
+  `date` varchar(64) NOT NULL,\
+  `time` varchar(256) NOT NULL,\
+  `place` varchar(256) NOT NULL,\
+  PRIMARY KEY (`post_id`),\
+  KEY `user_id` (`user_id`)\
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=187 ;\
+\
+--\
+-- Dumping data for table `posts`\
+--\
+\
+INSERT INTO `posts` (`post_id`, `created`, `modified`, `user_id`, `group_category`, `picture`, `content`, `interest`, `date`, `time`, `place`) VALUES\
+(29, 1385672591, 1385672591, 107, 'Everyone', '107.jpg', '', 'movie', '', 'tomorrow', 'cmabridge'),\
+(30, 1385672780, 1385672780, 107, 'Everyone', '107.jpg', '', 'tvt', '', 'saturday', 'harvard'),\
+(31, 1385682173, 1385682173, 107, 'Everyone', '107.jpg', '', 'movie', '', 'tomorrow', 'cambridge'),\
+(32, 1385682397, 1385682397, 107, 'Everyone', '107.jpg', '', 'Lunch', '', 'Saturday', 'quincy'),\
+(49, 1387253179, 1387253179, 107, 'Everyone', '107.jpg', '', 'afd', '12/16/2013', 'adf', 'adsf'),\
+(50, 1387254488, 1387254488, 107, 'Everyone', '107.jpg', '', 'Movie', '12/16/2013', '2pm', 'Cambridge, MA'),\
+(51, 1387288302, 1387288302, 107, 'Everyone', '107.jpg', '', 'Movie', '12/17/2013', '11pm', 'Cambridge, MA'),\
+(52, 1387340617, 1387340617, 107, 'Everyone', '107.jpg', '', 'Movie', '12/17/2013', '11:20pm', 'Quincy Street, Cambridge, MA, United States'),\
+(53, 1387400859, 1387400859, 107, 'Everyone', '107.jpg', '', 'Movie', 'Thursday, 12 December, 2013', '11:00pm', 'Quincy Street, Cambridge, MA, United States'),\
+(54, 1387401217, 1387401217, 107, 'Everyone', '107.jpg', '', 'TV', 'Wed, Dec, 13', '11:00am', 'Hancock Street, Cambridge, MA, United States'),\
+(55, 1387402123, 1387402123, 107, 'Everyone', '107.jpg', '', 'TV', 'Wed, Dec, 13', '8pm', 'Maxwells Avenue, Ashcroft, New South Wales, Australia'),\
+(56, 1387403716, 1387403716, 107, 'Everyone', '107.jpg', '', 'TV', 'Wed, Dec, 13', '11:00pm', 'Harvard Square Station, Massachusetts Avenue, Cambridge, MA, United States'),\
+(57, 1387405823, 1387405823, 107, 'Everyone', '107.jpg', '', 'Beer', 'Wed, Dec, 13', '7:30pm', 'Harvard Square Station, Massachusetts Avenue, Cambridge, MA, United States'),\
+(58, 1387525371, 1387525371, 107, 'Everyone', '107.jpg', '', 'sdf', 'Thu December 19,2013', '7pm', 'Asfordby, United Kingdom'),\
+(59, 1387572530, 1387572530, 107, 'Everyone', '107.jpg', '', 'Movie', 'Fri December 20, 2013', '10:pm', 'harvard'),\
+(60, 1387572640, 1387572640, 107, 'Everyone', '107.jpg', '', 'Movie', 'Fri, December 20, 2013', '9pm', 'harvard'),\
+(61, 1387816716, 1387816716, 107, 'Everyone', '107.png', '', 'Movie', 'Tue December 24, 2013', '7pm', 'Los Angeles, CA, United States'),\
+(62, 1387817419, 1387817419, 107, 'Everyone', '107.png', '', 'Movie', 'Mon, December 23, 2013', '7pm', 'Afdayrik, Tiris Zemmour, Mauritania'),\
+(63, 1387817518, 1387817518, 107, 'Family', '107.png', '', 'Movie', 'Mon, December 23, 2013', '7pm', 'Harvard Square, Boston, MA, United States'),\
+(64, 1387817560, 1387817560, 107, 'Family', '107.png', '', 'Movie', 'Mon, December 23, 2013', '7pm', 'harvard square'),\
+(65, 1387818191, 1387818191, 107, 'Friends', '107.png', '', 'post', 'Mon, December 23, 2013', '7pm', 'Harvard Street, San Francisco, CA, United States'),\
+(66, 1387823819, 1387823819, 123, 'Everyone', '123.png', '', 'Movie', 'Mon, December 23, 2013', '7pm', 'Phoenix, AZ, United States'),\
+(67, 1388010820, 1388010820, 107, 'Everyone', '107.png', 'brign your food', 'Movie', 'Wed, December 25, 2013', '7pm', 'USC McCarthy Way, Los Angeles, CA, United States'),\
+(68, 1388011617, 1388011617, 107, 'Everyone', '107.png', '', 'gambling', 'Wed, December 25, 2013', '8:40pm', 'Las Vegas, NV, United States'),\
+(69, 1388014925, 1388014925, 107, 'Everyone', '107.png', '', 'Movie', 'Wed, December 25, 2013', '10pm', 'Las Vegas, NV, United States'),\
+(70, 1388030862, 1388030862, 107, 'Everyone', '107.png', 'sdf', 'dfds', 'Wed, December 25, 2013', '7pm', 'sdf, United States'),\
+(71, 1388804449, 1388804449, 107, 'Everyone', '107.png', '', 'Movie', 'Fri, January 03, 2014', '7pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(72, 1388804488, 1388804488, 107, 'Everyone', '107.png', '', 'Movie', 'Fri, January 03, 2014', '7pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(73, 1388804517, 1388804517, 107, 'Everyone', '107.png', '', 'Movie', 'Fri, January 03, 2014', '7pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(74, 1388804757, 1388804757, 107, 'Everyone', '107.png', '', 'Movie', 'Fri, January 03, 2014', '7pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(75, 1388804976, 1388804976, 107, 'Everyone', '107.png', '', 'Movie', 'Fri, January 03, 2014', '7pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(76, 1388805091, 1388805091, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(77, 1388805341, 1388805341, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(78, 1388805362, 1388805362, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(79, 1388805419, 1388805419, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(80, 1388805427, 1388805427, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(81, 1388805440, 1388805440, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(82, 1388805473, 1388805473, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(83, 1388805486, 1388805486, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(84, 1388805531, 1388805531, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(85, 1388805608, 1388805608, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(86, 1388805633, 1388805633, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(87, 1388805644, 1388805644, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(88, 1388805656, 1388805656, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(89, 1388805680, 1388805680, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(90, 1388805720, 1388805720, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(91, 1388805771, 1388805771, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(92, 1388805828, 1388805828, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(93, 1388805879, 1388805879, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(94, 1388805904, 1388805904, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(95, 1388805915, 1388805915, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(96, 1388805930, 1388805930, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(97, 1388805933, 1388805933, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(98, 1388805955, 1388805955, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(99, 1388805963, 1388805963, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(100, 1388806002, 1388806002, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(101, 1388806011, 1388806011, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(102, 1388806018, 1388806018, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(103, 1388806230, 1388806230, 107, 'Everyone', '107.png', '', 'Beer', 'Fri, January 03, 2014', '10pm', 'Silicon Valley, Santa Clara, CA, United States'),\
+(104, 1388806280, 1388806280, 107, 'Everyone', '107.png', '', 'safa', 'Fri, January 03, 2014', '11pm', 'asdfghjm, Long Beach, CA, United States'),\
+(105, 1388806309, 1388806309, 107, 'Everyone', '107.png', 'a', 'asdf', 'Fri, January 03, 2014', 'dsaf', 'Safari Drive, San Jose, CA, United States'),\
+(106, 1388806385, 1388806385, 107, 'Everyone', '107.png', 'a', 'asdf', 'Fri, January 03, 2014', 'dsaf', 'Safari Drive, San Jose, CA, United States'),\
+(107, 1388806419, 1388806419, 107, 'Everyone', '107.png', 'a', 'asdf', 'Fri, January 03, 2014', 'dsaf', 'Safari Drive, San Jose, CA, United States'),\
+(108, 1388806729, 1388806729, 107, 'Everyone', '107.png', 'a', 'asdf', 'Fri, January 03, 2014', 'dsaf', 'Safari Drive, San Jose, CA, United States'),\
+(109, 1388806739, 1388806739, 107, 'Everyone', '107.png', 'a', 'asdf', 'Fri, January 03, 2014', 'dsaf', 'Safari Drive, San Jose, CA, United States'),\
+(110, 1388806967, 1388806967, 107, 'Everyone', '107.png', '', 'sdf', 'Fri, January 03, 2014', 'sdaf', 'fsda'),\
+(111, 1388807122, 1388807122, 107, 'Everyone', '107.png', '', 'sdf', 'Fri, January 03, 2014', 'sdaf', 'fsda'),\
+(112, 1388807159, 1388807159, 107, 'Everyone', '107.png', '', 'sdf', 'Fri, January 03, 2014', 'sdaf', 'fsda'),\
+(113, 1388807166, 1388807166, 107, 'Everyone', '107.png', '', 'sdf', 'Fri, January 03, 2014', 'sdaf', 'fsda'),\
+(114, 1388807199, 1388807199, 107, 'Everyone', '107.png', '', 'sdf', 'Fri, January 03, 2014', 'sdaf', 'fsda'),\
+(115, 1388807309, 1388807309, 107, 'Everyone', '107.png', '', 'sdf', 'Fri, January 03, 2014', 'sdaf', 'fsda'),\
+(116, 1388807338, 1388807338, 107, 'Everyone', '107.png', '', 'sdf', 'Fri, January 03, 2014', 'sdaf', 'fsda'),\
+(117, 1388807346, 1388807346, 107, 'Everyone', '107.png', '', 'sdf', 'Fri, January 03, 2014', 'sdaf', 'fsda'),\
+(118, 1388807372, 1388807372, 107, 'Everyone', '107.png', '', 'sadf', 'Fri, January 03, 2014', 'afa', 'sdaf'),\
+(119, 1388807421, 1388807421, 107, 'Everyone', '107.png', '', 'safasf', 'Fri, January 03, 2014', 'asf', 'sadf, Santa Clara, CA, United States'),\
+(120, 1388807439, 1388807439, 107, 'Everyone', '107.png', 'saf', 'sadf', 'Fri, January 03, 2014', 'saf', 'sf'),\
+(121, 1388807477, 1388807477, 107, 'Everyone', '107.png', 'saf', 'sadf', 'Fri, January 03, 2014', 'saf', 'sf'),\
+(122, 1388807496, 1388807496, 107, 'Everyone', '107.png', '', 'sfs', 'Fri, January 03, 2014', 'asdf', 'sadfsdf, United States'),\
+(123, 1388808003, 1388808003, 107, 'Everyone', '107.png', '', 'sfs', 'Fri, January 03, 2014', 'asdf', 'sadfsdf, United States'),\
+(124, 1388808021, 1388808021, 107, 'Everyone', '107.png', '', 'sfs', 'Fri, January 03, 2014', 'asdf', 'sadfsdf, United States'),\
+(125, 1388808065, 1388808065, 107, 'Everyone', '107.png', '', 'sfs', 'Fri, January 03, 2014', 'asdf', 'sadfsdf, United States'),\
+(126, 1388808104, 1388808104, 107, 'Everyone', '107.png', '', 'sfs', 'Fri, January 03, 2014', 'asdf', 'sadfsdf, United States'),\
+(127, 1388808400, 1388808400, 107, 'Everyone', '107.png', '', 'sfs', 'Fri, January 03, 2014', 'asdf', 'sadfsdf, United States'),\
+(128, 1388816178, 1388816178, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(129, 1388816555, 1388816555, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(130, 1388816616, 1388816616, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(131, 1388816661, 1388816661, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(132, 1388816681, 1388816681, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(133, 1388817385, 1388817385, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(134, 1388817429, 1388817429, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(135, 1388817451, 1388817451, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(136, 1388817646, 1388817646, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(137, 1388817922, 1388817922, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(138, 1388817944, 1388817944, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(139, 1388817959, 1388817959, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(140, 1388817969, 1388817969, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(141, 1388817984, 1388817984, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(142, 1388818011, 1388818011, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(143, 1388818110, 1388818110, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(144, 1388818127, 1388818127, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(145, 1388818161, 1388818161, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(146, 1388818185, 1388818185, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(147, 1388818194, 1388818194, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(148, 1388818207, 1388818207, 107, 'Everyone', '107.png', 's', 'afdas', 'Sat, January 04, 2014', 'fsa', 'asdfasdf, San Francisco, CA, United States'),\
+(149, 1388818269, 1388818269, 107, 'Everyone', '107.png', 'saf', 'fasfa', 'Sat, January 04, 2014', 'safa', 'safa'),\
+(150, 1388818322, 1388818322, 107, 'Everyone', '107.png', '', 'sadf', 'Sat, January 04, 2014', 'sadf', 'asdfasdf, San Francisco, CA, United States'),\
+(151, 1388818367, 1388818367, 107, 'Everyone', '107.png', '', 'sadf', 'Sat, January 04, 2014', 'sadf', 'asdfasdf, San Francisco, CA, United States'),\
+(152, 1388818489, 1388818489, 107, 'Everyone', '107.png', '', 'sadf', 'Sat, January 04, 2014', 'sadf', 'asdfasdf, San Francisco, CA, United States'),\
+(153, 1388818764, 1388818764, 107, 'Everyone', '107.png', '', 'sdaf', 'Sat, January 04, 2014', 'asdf', 'SDF Bus Stop, GP Block, Salt Lake City, Kolkata, West Bengal, India'),\
+(154, 1388818866, 1388818866, 107, 'Everyone', '107.png', '', 'dF', 'Sat, January 04, 2014', 'SAF', 'ASF'),\
+(155, 1388818905, 1388818905, 107, 'Everyone', '107.png', '', 'sa', 'Sat, January 04, 2014', 'saf', 'SDF Bus Stop, GP Block, Salt Lake City, Kolkata, West Bengal, India'),\
+(156, 1388818959, 1388818959, 107, 'Everyone', '107.png', '', 'sdfa', 'Sat, January 04, 2014', 'asdf', 'Safari Drive, San Jose, CA, United States'),\
+(157, 1388818996, 1388818996, 107, 'Everyone', '107.png', '', 'sdfa', 'Sat, January 04, 2014', 'asdf', 'Safari Drive, San Jose, CA, United States'),\
+(158, 1388819006, 1388819006, 107, 'Everyone', '107.png', '', 'sdfa', 'Sat, January 04, 2014', 'asdf', 'Safari Drive, San Jose, CA, United States'),\
+(159, 1388819036, 1388819036, 107, 'Everyone', '107.png', '', 'sdfa', 'Sat, January 04, 2014', 'asdf', 'Safari Drive, San Jose, CA, United States'),\
+(160, 1388819054, 1388819054, 107, 'Everyone', '107.png', '', 'sdfa', 'Sat, January 04, 2014', 'asdf', 'Safari Drive, San Jose, CA, United States'),\
+(161, 1388819170, 1388819170, 107, 'Everyone', '107.png', '', 'sdfa', 'Sat, January 04, 2014', 'asdf', 'Safari Drive, San Jose, CA, United States'),\
+(162, 1388819183, 1388819183, 107, 'Everyone', '107.png', '', 'sdfa', 'Sat, January 04, 2014', 'asdf', 'Safari Drive, San Jose, CA, United States'),\
+(163, 1388820169, 1388820169, 107, 'Everyone', '107.png', '', 'sfa', 'Sat January 04, 2014', 'sdf', 'Des Moines International Airport, Fleur Drive, Des Moines, IA, United States'),\
+(164, 1388820311, 1388820311, 107, 'Everyone', '107.png', '', 'Movie', 'Sat, January 04, 2014', 'sf', 'Oakland, CA, United States'),\
+(165, 1388822480, 1388822480, 107, 'Everyone', '107.png', '', 'Movie', 'Sat, January 04, 2014', 'sf', 'Oakland, CA, United States'),\
+(166, 1388823633, 1388823633, 107, 'Everyone', '107.png', '', 'safa', 'Sat, January 04, 2014', 'sadf', 'asdfasdf, San Francisco, CA, United States'),\
+(167, 1388824415, 1388824415, 107, 'Everyone', '107.png', '', 'safa', 'Sat, January 04, 2014', 'sadf', 'asdfasdf, San Francisco, CA, United States'),\
+(168, 1388824442, 1388824442, 107, 'Everyone', '107.png', '', 'safa', 'Sat, January 04, 2014', 'sadf', 'asdfasdf, San Francisco, CA, United States'),\
+(169, 1388824453, 1388824453, 107, 'Everyone', '107.png', '', 'safa', 'Sat, January 04, 2014', 'sadf', 'asdfasdf, San Francisco, CA, United States'),\
+(170, 1388824469, 1388824469, 107, 'Everyone', '107.png', '', 'safa', 'Sat, January 04, 2014', 'sadf', 'asdfasdf, San Francisco, CA, United States'),\
+(171, 1388824522, 1388824522, 107, 'Everyone', '107.png', '', 'safa', 'Sat, January 04, 2014', 'sadf', 'asdfasdf, San Francisco, CA, United States'),\
+(172, 1388824611, 1388824611, 107, 'Everyone', '107.png', '', 'safa', 'Sat, January 04, 2014', 'sadf', 'asdfasdf, San Francisco, CA, United States'),\
+(173, 1388850538, 1388850538, 107, 'Everyone', '107.png', '', 'sfds', 'Sat, January 04, 2014', 'dsfa', 'SDF Bus Stop, GP Block, Salt Lake City, Kolkata, West Bengal, India'),\
+(174, 1388850945, 1388850945, 107, 'Everyone', '107.png', '', 'sfds', 'Sat, January 04, 2014', 'dsfa', 'SDF Bus Stop, GP Block, Salt Lake City, Kolkata, West Bengal, India'),\
+(175, 1388851166, 1388851166, 107, 'Everyone', '107.png', '', 'sfds', 'Sat, January 04, 2014', '', 'SDF Bus Stop, GP Block, Salt Lake City, Kolkata, West Bengal, India'),\
+(176, 1388851193, 1388851193, 107, 'Everyone', '107.png', '', 'sfds', 'Sat, January 04, 2014', '', 'SDF Bus Stop, GP Block, Salt Lake City, Kolkata, West Bengal, India'),\
+(177, 1388851305, 1388851305, 107, 'Everyone', '107.png', '', 'sdaf', 'Sat, January 04, 2014', '', 'asdfghjkl, Redwood Meadows, AB, Canada'),\
+(178, 1388851337, 1388851337, 107, 'Everyone', '107.png', '', 'dsfa', 'sdfa', '', 'sdafsd, United States'),\
+(179, 1388851613, 1388851613, 107, 'Everyone', '107.png', '', 'dsfa', 'sdfa', '', 'sdafsd, United States'),\
+(180, 1388854567, 1388854567, 107, 'Everyone', '107.png', '', 'dsaf', 'Sat, January 04, 2014', 'Sat, January 04, 2014', 'Asfordby, United Kingdom'),\
+(181, 1388854598, 1388854598, 107, 'Everyone', '107.png', '', 'sdfa', 'Sat, January 04, 2014', 'Sat, January 04, 2014', 'dsfa'),\
+(182, 1388854671, 1388854671, 107, 'Everyone', '107.png', '', 'sdfa', 'Sat, January 04, 2014', 'Sat, January 04, 2014', 'dsfa'),\
+(183, 1388854695, 1388854695, 107, 'Everyone', '107.png', '', 'sdfa', 'Sat, January 04, 2014', 'Sat, January 04, 2014', 'dsfa'),\
+(184, 1388854708, 1388854708, 107, 'Everyone', '107.png', '', 'sdfa', 'Sat, January 04, 2014', 'Sat, January 04, 2014', 'dsfa'),\
+(185, 1388854753, 1388854753, 107, 'Friends', '107.png', '', 'test', 'Sat, January 04, 2014', 'Sat, January 04, 2014', 'dsfa'),\
+(186, 1388892453, 1388892453, 121, 'Everyone', 'Invalid file type.', '', 'asfads', 'Sat, January 04, 2014', 'Sat, January 04, 2014', 'sdfa');\
+\
+--\
+-- Constraints for dumped tables\
+--\
+\
+--\
+-- Constraints for table `posts`\
+--\
+ALTER TABLE `posts`\
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;\
+}
