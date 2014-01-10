@@ -58,7 +58,7 @@ class posts_controller extends base_controller {
 			{							
 				$to = $value;		
 				$subject = "Would you like to join? ";	
-				$message = 'Spur: '.$user_first.' '.$user_last.' Event info: Activity: '.$_POST['interest'].' Time: '.$_POST['time'].'  Place: '.$_POST['place'].' ';
+				$message = 'Spur: '.$user_first.' '.$user_last.' Event info: Activity: '.$_POST['interest'].' Time: '.$_POST['date'].' '.$_POST['time'].'  Place: '.$_POST['place'].' ';
 				$from = "$useremail";
 				$headers = "From:" . $from;
 				mail($to,$subject,$message,$headers);
@@ -68,7 +68,7 @@ class posts_controller extends base_controller {
 		# Sending group text messege
 		if($_POST['groupmessage'])
 		{
-		$g ='SELECT users.user_id,users.email
+		$g ='SELECT users.user_id,users.phone
     			FROM users
     			INNER JOIN users_users
     			ON users.user_id = users_users.user_id		
@@ -76,18 +76,18 @@ class posts_controller extends base_controller {
 				AND users_users.user_id_followed = '.$this->user->user_id;
 				
     	
-			$emails = DB::instance(DB_NAME)->select_kv($g, 'user_id', 'phone');
-			$phone = $this->user->phone;
-			$phone = "$phone@tmomail.net";
+			$phones = DB::instance(DB_NAME)->select_kv($g, 'user_id', 'phone');
+			
+			$useremail = $this->user->email;
 			$user_first= $this->user->first_name;
 			$user_last = $this->user->last_name;
 		
-			foreach ($emails as $key => $value) 
+			foreach ($phones as $key => $value) 
 			{							
-				$to = $value;		
+				$to = "$value@tmomail.net";
 				$subject = "Would you like to join? ";	
-				$message = 'Spur: '.$user_first.' '.$user_last.' Event info: Activity: '.$_POST['interest'].' Time: '.$_POST['time'].'  Place: '.$_POST['place'].' ';
-				$from = "$phone";
+				$message = 'Spur: '.$user_first.' '.$user_last.' Event info: Activity: '.$_POST['interest'].' Time: '.$_POST['date'].' '.$_POST['time'].'  Place: '.$_POST['place'].' ';
+				$from = "$useremail";
 				$headers = "From:" . $from;
 				mail($to,$subject,$message,$headers);
 			}
