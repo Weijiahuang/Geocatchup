@@ -51,17 +51,49 @@ class posts_controller extends base_controller {
     	
 			$emails = DB::instance(DB_NAME)->select_kv($g, 'user_id', 'email');
 			$useremail = $this->user->email;
+			$user_first= $this->user->first_name;
+			$user_last = $this->user->last_name;
 		
 			foreach ($emails as $key => $value) 
 			{							
 				$to = $value;		
 				$subject = "Would you like to join? ";	
-				$message = 'Event info: Activity: '.$_POST['interest'].' Time: '.$_POST['time'].'  Place: '.$_POST['place'].' ';
+				$message = 'Spur: '.$user_first.' '.$user_last.' Event info: Activity: '.$_POST['interest'].' Time: '.$_POST['time'].'  Place: '.$_POST['place'].' ';
 				$from = "$useremail";
 				$headers = "From:" . $from;
 				mail($to,$subject,$message,$headers);
 			}		
 		}
+		
+		# Sending group text messege
+		if($_POST['groupmessage'])
+		{
+		$g ='SELECT users.user_id,users.email
+    			FROM users
+    			INNER JOIN users_users
+    			ON users.user_id = users_users.user_id		
+				WHERE users_users.group = "'.$_POST['groupmessage'].'" 
+				AND users_users.user_id_followed = '.$this->user->user_id;
+				
+    	
+			$emails = DB::instance(DB_NAME)->select_kv($g, 'user_id', 'phone');
+			$phone = $this->user->phone;
+			$phone = "$phone@tmomail.net";
+			$user_first= $this->user->first_name;
+			$user_last = $this->user->last_name;
+		
+			foreach ($emails as $key => $value) 
+			{							
+				$to = $value;		
+				$subject = "Would you like to join? ";	
+				$message = 'Spur: '.$user_first.' '.$user_last.' Event info: Activity: '.$_POST['interest'].' Time: '.$_POST['time'].'  Place: '.$_POST['place'].' ';
+				$from = "$phone";
+				$headers = "From:" . $from;
+				mail($to,$subject,$message,$headers);
+			}
+			
+		}
+		
 			        
         Router::redirect('/posts/index');
      }

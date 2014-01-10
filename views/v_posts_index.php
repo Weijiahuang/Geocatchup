@@ -27,8 +27,46 @@
 	  	<input type="hidden" id="project-id">
 	  	<p id="project-description"></p>
 	  	<label for="date">Date</label>
-	  	<input type="text" name="date" id="date" value="<?=date("D, F d, Y")?>"  class="text ui-widget-content ui-corner-all">
-        <input type="text" name="time" id="time" placeholder="Time?" class="text ui-widget-content ui-corner-all">
+	  	
+	  	<input type="text" name="date" id="date" value="<?=date("D, F d, Y")?>"  class="text ui-widget-content ui-corner-all">       
+        <select name="time" id="time" class="text ui-widget-content ui-corner-all">
+         <option value="07:30pm"> 07:30pm</option>
+         <option value="08:00pm"> 08:00pm</option>
+         <option value="08:30pm"> 08:30pm</option>
+         <option value="9:00pm"> 09:00pm</option>
+         <option value="9:30pm"> 09:30pm</option>
+         <option value="10:00pm"> 10:00pm</option>
+         <option value="11pm"> 11:00pm</option>
+         <option value="11:30pm"> 11:30pm</option>
+         <option value="12:00am"> 12:00am</option>
+         <option value="12:30am"> 12:30pm</option>
+         <option value="1:00am"> 01:00am</option>
+         <option value="1:30am"> 01:30am</option>
+         <option value="2:00am"> 02:00am</option>
+         <option value="2:30am"> 02:30am</option>
+         <option value="3:00am"> 03:00am</option>
+         <option value="3:30am"> 03:30am</option>
+         <option value="4:00am"> 04:00am</option>
+         <option value="4:30am"> 04:30am</option>         
+         <option value="5:00am"> 05:00am</option>
+         <option value="5:30am"> 05:30am</option>
+         <option value="6:00am"> 06:00am</option>
+         <option value="6:30am"> 06:30am</option>
+		 <option value="7:00am"> 07:00am</option>
+		 <option value="7:30am"> 07:30am</option>
+		 <option value="8:00am"> 08:00am</option>
+		 <option value="8:30am"> 08:30am</option>
+		 <option value="9:00am"> 09:00am</option>
+		 <option value="9:30am"> 09:30am</option>
+		 <option value="10:00am"> 10:00am</option>
+		 <option value="10:30am"> 10:30am</option>
+		 <option value="11:00am"> 11:00am</option>
+		 <option value="11:30am"> 11:30am</option>
+		 <option value="12pm"> 12:00pm</option>
+		 
+       </select>
+        
+        
         <label for="place">Location</label>
         <input type="text" name="place" id="place" placeholder="Enter the location"
              onFocus="geolocate()" class="text ui-widget-content ui-corner-all">

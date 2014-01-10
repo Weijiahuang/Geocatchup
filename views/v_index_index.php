@@ -46,9 +46,10 @@ Locate and connect your friends. Instantly.
 <div id="signupbox">
 <h2> Get Started! </h2>
 
-<form method = 'POST' action = '/users/p_signup'>
+<form method = 'POST' action = '/users/p_signup'>    
 	<input class="signupinput" type = 'text' name = 'first_name' placeholder="First name"> <br> 
 	<input class="signupinput" type ='text' name = 'last_name' placeholder="Last name"><br>
+	<input class="signupinput" name = 'number' placeholder="Number"> <br>
 	<input class="signupinput" id="email" type ='text' name = 'email' placeholder="Email"><br>
 	<input class="signupinput" type ='password' name = 'password' placeholder="Password">
 	<p>
@@ -67,8 +68,7 @@ Locate and connect your friends. Instantly.
 			Please fill in the filed(s).
 			</div>			
 		<?php endif; ?>	
-	<br>
-	<input class="participation" type = 'submit' value = 'Join now' style="width:300px; height:30px;"> <br>
+	<input class="participation" type = 'submit' value = 'Join now' style="width:310px; height:30px;"> <br>
 </form>
 
 </div>

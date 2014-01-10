@@ -15,6 +15,7 @@
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
  
   <script src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.3"></script>
+
   <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
   
 </head>
