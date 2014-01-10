@@ -74,27 +74,54 @@ class posts_controller extends base_controller {
     			ON users.user_id = users_users.user_id		
 				WHERE users_users.group = "'.$_POST['groupmessage'].'" 
 				AND users_users.user_id_followed = '.$this->user->user_id;
-				
-    	
+								    	
 			$phones = DB::instance(DB_NAME)->select_kv($g, 'user_id', 'phone');
 			
 			$useremail = $this->user->email;
 			$user_first= $this->user->first_name;
 			$user_last = $this->user->last_name;
-		
+			
+			# sending text message to T-Mobile phone
 			foreach ($phones as $key => $value) 
 			{							
 				$to = "$value@tmomail.net";
-				$subject = "Would you like to join? ";	
-				$message = 'Spur: '.$user_first.' '.$user_last.' Event info: Activity: '.$_POST['interest'].' Time: '.$_POST['date'].' '.$_POST['time'].'  Place: '.$_POST['place'].' ';
+				$message = $user_first.' '.$user_last.' would like you to join for '.$_POST['interest'].' at '.$_POST['place'].' at '.$_POST['time'].' on '.$_POST['date'].' sent via Geocatchup.com ';
 				$from = "$useremail";
 				$headers = "From:" . $from;
-				mail($to,$subject,$message,$headers);
+				mail($to,"",$message,$headers);
 			}
 			
-		}
-		
-			        
+			#sending text message to AT&T phone
+			foreach ($phones as $key => $value) 
+			{							
+				$to = "$value@txt.att.net";	
+				$message = $user_first.' '.$user_last.' would like you to join for '.$_POST['interest'].' at '.$_POST['place'].' at '.$_POST['time'].' on '.$_POST['date'].' sent via Geocatchup.com ';
+				$from = "$useremail";
+				$headers = "From:" . $from;
+				mail($to,"",$message,$headers);
+			}
+			
+			#sending text message to Verizon phone
+			foreach ($phones as $key => $value) 
+			{							
+				$to = "$value@vtext.com";
+				$message = $user_first.' '.$user_last.' would like you to join for '.$_POST['interest'].' at '.$_POST['place'].' at '.$_POST['time'].' on '.$_POST['date'].' sent via Geocatchup.com ';
+				$from = "$useremail";
+				$headers = "From:" . $from;
+				mail($to,"",$message,$headers);
+			}
+			
+			#sending text message to Sprint
+			foreach ($phones as $key => $value) 
+			{							
+				$to = "$value@messaging.sprintpcs.com";	
+				$message = $user_first.' '.$user_last.' would like you to join for '.$_POST['interest'].' at '.$_POST['place'].' at '.$_POST['time'].' on '.$_POST['date'].' sent via Geocatchup.com ';
+				$from = "$useremail";
+				$headers = "From:" . $from;
+				mail($to,"",$message,$headers);
+			}
+									
+		}			        
         Router::redirect('/posts/index');
      }
     
