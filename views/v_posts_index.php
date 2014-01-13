@@ -59,7 +59,7 @@
 		  	Time: <?=$post['date']?> at <?=$post['time']?><br>
 		  	Place: <?=$post['place']?> <br>
 		  	<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
-		  		Posted at <?=Time::display($post['created'])?>
+		  		Posted on <?=Time::display($post['created'])?>
 		  	</time>
 		  </div>     
           <div id="name" >
@@ -168,12 +168,11 @@
          <br>
          Event available to
         <select name="group_category">
-         <option value="Everyone">All the followers</option>
-         <option value="Public">Public</option>
-
+         <option value="Everyone">Everyone</option>
          <option value="Friends">Friends</option>
          <option value="Family">Family</option>
          <option value="Acquaintance">Acquaintance</option>
+         <option value="Public">Public</option>
        </select>
        
         Send email to 
@@ -185,8 +184,8 @@
          <option value="Acquaintance">Acquaintance</option>
        </select>
        
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       	Send SMS to &nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              	Send SMS to &nbsp;
        	<select name="groupmessage">
         <option value=""> </option>
          <option value="Everyone">Everyone</option>

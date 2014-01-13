@@ -3,7 +3,7 @@
     		<?php if(isset($followers[$user['user_id']])): ?>
 
     		<div class = "box">
-    		<img src= "/uploads/<?=$user['picture'];?>" ><br>
+    		<img src= "/uploads/<?=$user['picture'];?>"  style="height:120px; width:100px;"><br>
     		 <strong style="color:#000000"><?=$user['first_name']?> <?=$user['last_name']?></strong>  
 			<div style="position:relative; text-align:center; margin-top:10%;"> 
 						
@@ -22,7 +22,6 @@
 	    
 	        	       		
    			<?php endif; ?>
-   			
    			</div>
  <form action="/groups/grouping" method="post">
    <select class="group"  name='group'>   
@@ -34,6 +33,11 @@
    </select>
    <input type="submit" style="float:left;" value="Group me"/>	
  </form>
+ <br/>
+ <br/>
+ Phone: <?=$user['phone']?>
+ <br/>
+ Email: <?=$user['email']?>
  
  </div>
    	

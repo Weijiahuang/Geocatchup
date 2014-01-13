@@ -49,7 +49,7 @@ Locate and connect your friends. Instantly.
 <form method = 'POST' action = '/users/p_signup'>    
 	<input class="signupinput" type = 'text' name = 'first_name' placeholder="First name"> <br> 
 	<input class="signupinput" type ='text' name = 'last_name' placeholder="Last name"><br>
-	<input class="signupinput" name = 'number' placeholder="Number"> <br>
+	<input class="signupinput" name = 'phone' placeholder="Number"> <br>
 	<input class="signupinput" id="email" type ='text' name = 'email' placeholder="Email"><br>
 	<input class="signupinput" type ='password' name = 'password' placeholder="Password">
 	<p>

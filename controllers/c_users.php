@@ -59,9 +59,9 @@ class users_controller extends base_controller {
 		$lastname = $_POST['last_name'];
 		$email = $_POST['email'];
 		$password = $_POST['password'];
-		$number= $_POST['number'];
+		$phone= $_POST['phone'];
     
-    	if(empty($firstname) || empty($lastname) || empty($password) || empty($email)||empty($number))
+    	if(empty($firstname) || empty($lastname) || empty($password) || empty($email)||empty($phone))
     	{
     		Router::redirect("/users/check/blankness");
     	}

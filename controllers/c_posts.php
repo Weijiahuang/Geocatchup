@@ -58,9 +58,11 @@ class posts_controller extends base_controller {
 			{							
 				$to = $value;		
 				$subject = "Would you like to join? ";	
-				$message = 'Spur: '.$user_first.' '.$user_last.' Event info: Activity: '.$_POST['interest'].' Time: '.$_POST['date'].' '.$_POST['time'].'  Place: '.$_POST['place'].' ';
+				$message = '<html> <head><h1> testing </h1></head></html>'.$user_first.' '.$user_last.' would like you to join for '.$_POST['interest'].' at '.$_POST['place'].' at '.$_POST['time'].' on '.$_POST['date'].' sent via Geocatchup.com ';
 				$from = "$useremail";
-				$headers = "From:" . $from;
+				$headers = "MIME-Version: 1.0" . "\r\n";
+				$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
+				$headers .= "From:" . $from;
 				mail($to,$subject,$message,$headers);
 			}		
 		}
@@ -311,7 +313,6 @@ class posts_controller extends base_controller {
     	$this->template->content->connections = $connections;
     	$this->template->content->followers = $followers;
     	$this-> template-> content-> users = $users;
-    	
     	echo  $this->template;
     }    
     
