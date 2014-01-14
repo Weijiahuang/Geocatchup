@@ -1,7 +1,7 @@
 <!-- header -->
 <div id ="header">
 	<div id="logo">
-		Spur!
+		Geocatchup
     </div>
 
 <!-- sign in part -->

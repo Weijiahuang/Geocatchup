@@ -1,6 +1,6 @@
 <div id='profilemenu'>
     <div id="brandname" >
-		<strong>   Spur!</strong>
+		<strong>   Geocatchup</strong>
     </div>
 	<div id ="mainpage">
         <!-- Menu for users who are logged in -->

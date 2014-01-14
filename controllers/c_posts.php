@@ -58,7 +58,7 @@ class posts_controller extends base_controller {
 			{							
 				$to = $value;		
 				$subject = "Would you like to join? ";	
-				$message = '<html> <head><h1> testing </h1></head></html>'.$user_first.' '.$user_last.' would like you to join for '.$_POST['interest'].' at '.$_POST['place'].' at '.$_POST['time'].' on '.$_POST['date'].' sent via Geocatchup.com ';
+				$message = '<html> <head><h1> Geocatchup </h1></head></html>'.$user_first.' '.$user_last.' would like you to join for '.$_POST['interest'].' at '.$_POST['place'].' at '.$_POST['time'].' on '.$_POST['date'].' sent via Geocatchup.com ';
 				$from = "$useremail";
 				$headers = "MIME-Version: 1.0" . "\r\n";
 				$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
