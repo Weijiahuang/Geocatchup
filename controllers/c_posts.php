@@ -355,10 +355,8 @@ class posts_controller extends base_controller {
     # Do the insert
     DB::instance(DB_NAME)->insert('users_users', $data);
          	
-	$q = "SELECT users.email	 	
-	     FROM posts
-	     INNER JOIN users	 	
-	     WHERE users_users.user_id_followed = ".$_POST['id']; 
+	$q = 'SELECT * FROM users
+INNER JOIN users_users ON users.user_id = users_users.user_id_followed WHERE users_users.user_id = '.$this->user->user_id.' AND users_users.user_id_followed = '.$_POST['id']; 
 		     
 	$user_details = DB::instance(DB_NAME)->select_row($q);
 	     
