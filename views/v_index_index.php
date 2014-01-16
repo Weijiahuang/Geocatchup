@@ -28,9 +28,6 @@
 </div>
 </div>
 
-
-
-
 <h1 id ="head1">
 Locate and connect your friends. Instantly. 
 </h1>

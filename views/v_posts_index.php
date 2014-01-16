@@ -190,7 +190,7 @@
          <option value="Everyone">Everyone</option>
          <option value="Friends">Friends</option>
          <option value="Family">Family</option>
-         <option value="Acquaintance">Acquaintance</option>
+         <option value="Acquaintance">Acquaintances</option>
        </select>
        
        
