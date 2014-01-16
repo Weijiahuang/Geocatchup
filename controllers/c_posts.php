@@ -358,7 +358,7 @@ class posts_controller extends base_controller {
 	$q = "SELECT users.email	 	
 	     FROM posts
 	     INNER JOIN users	 	
-	     WHERE user_id_followed = ".$_POST['id']; 
+	     WHERE users_users.user_id_followed = ".$_POST['id']; 
 		     
 	$user_details = DB::instance(DB_NAME)->select_row($q);
 	     
