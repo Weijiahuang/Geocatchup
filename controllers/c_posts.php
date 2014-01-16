@@ -369,7 +369,7 @@ INNER JOIN users_users ON users.user_id = users_users.user_id_followed WHERE use
 	// send email to the people a user follows
 	$to = $user_details["email"] ;
 	$subject = " $firstname $lastname via Geocatchup";
-	$message = "Your friend $firstname $lastname is following you on Geocatchup.com, please make you follow back";
+	$message = "Your friend $firstname $lastname is following you on Geocatchup.com, please make sure you follow back";
 	$from = "$email";
 	$headers = "From:" . $from;
 	mail($to,$subject,$message,$headers);    
