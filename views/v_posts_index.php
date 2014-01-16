@@ -20,7 +20,7 @@
  
 <div id='profilemenu' >
    <div id ="brandname" >
-			<strong>   Geocatchup</strong>
+			<strong> Geocatchup</strong>
    </div>
    <div id ="mainpage" >
        <!-- Menu for users who are logged in -->
@@ -156,7 +156,6 @@
 		 
        </select>
         
-        
         <label for="place">Location</label>
         <input type="text" name="place" id="place" placeholder="Enter the location"
              onFocus="geolocate()" class="text ui-widget-content ui-corner-all">
@@ -171,7 +170,7 @@
          <option value="Everyone">Everyone</option>
          <option value="Friends">Friends</option>
          <option value="Family">Family</option>
-         <option value="Acquaintance">Acquaintance</option>
+         <option value="Acquaintances">Acquaintances</option>
          <option value="Public">Public</option>
        </select>
        
@@ -181,7 +180,7 @@
          <option value="Everyone">Everyone</option>
          <option value="Friends">Friends</option>
          <option value="Family">Family</option>
-         <option value="Acquaintance">Acquaintance</option>
+         <option value="Acquaintances">Acquaintances</option>
        </select>
        
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

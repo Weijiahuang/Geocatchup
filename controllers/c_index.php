@@ -20,7 +20,7 @@ class index_controller extends base_controller {
 		$this->template->content = View::instance('v_index_index');
 			
 		# Now set the <title> tag
-		$this->template->title = "Spur!";
+		$this->template->title = "Geocatchup";
 
 	      					     		
 		# Render the view

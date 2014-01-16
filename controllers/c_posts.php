@@ -239,7 +239,8 @@ class posts_controller extends base_controller {
         INNER JOIN users 
             ON posts.user_id = users.user_id
         WHERE users_users.user_id = '.$this->user->user_id.'
-        AND users_users.group = posts.group_category ORDER BY posts.created DESC';
+        AND (users_users.group = posts.group_category 
+        OR posts.group_category = "Public") ORDER BY posts.created DESC';
       
 
     # Run the query, store the results in the variable $posts
@@ -353,10 +354,28 @@ class posts_controller extends base_controller {
 
     # Do the insert
     DB::instance(DB_NAME)->insert('users_users', $data);
-
-    # Send them back
-    Router::redirect("/posts/users");
-
+         	
+	$q = "SELECT users.email	 	
+	     FROM posts
+	     INNER JOIN users	 	
+	     WHERE user_id_followed = ".$_POST['id']; 
+		     
+	$user_details = DB::instance(DB_NAME)->select_row($q);
+	     
+	$firstname=$this->user->first_name;
+	
+	$lastname=$this->user->last_name;
+	
+	$email=$this->user->email;
+		
+	// send email to the people a user follows
+	$to = $user_details["email"] ;
+	$subject = " $firstname $lastname via Geocatchup";
+	$message = "Your friend $firstname $lastname is following you on Geocatchup.com, please make you follow back";
+	$from = "$email";
+	$headers = "From:" . $from;
+	mail($to,$subject,$message,$headers);    
+		
 	}
 	
 	public function unfollow1($user_id_followed) {
@@ -387,7 +406,6 @@ class posts_controller extends base_controller {
 	public function join($post_id_followed=NULL) {
 
     # Prepare the data array to be inserted
-    echo $_POST['id'];
     $data = Array(
         "created" => Time::now(),
         "user_id" => $this->user->user_id,
