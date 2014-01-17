@@ -1,3 +1,5 @@
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <br>
 <br>
 <!-- map  -->
@@ -112,7 +114,10 @@
    <form name="eventForm" id="eventForm" method="post" action="/posts/p_add">
       <fieldset>  
       	<label for="interest">Activity</label>
+	  	<img id="project-icon"  src="../img/default.jpg" class="ui-state-default" alt="">
 	  	<input type="text" name="interest" id="interest" class="text ui-widget-content ui-corner-all interest">
+	  	<input type="hidden" id="project-id">
+	  	<p id="project-description"></p>
 	  	<label for="date">Date</label>
 	  	
 	  	<input type="text" name="date" id="date" value="<?=date("D, F d, Y")?>"  class="text ui-widget-content ui-corner-all">       
