@@ -12,14 +12,14 @@ class users_controller extends base_controller {
     
     public function p_upload()
 	{
-	$picture= Upload::upload($_FILES, "/uploads/", array("jpg", "jpeg", "gif", "png","PNG","JPG","JPEG","GIF"), $this->user->user_id);
+	    $picture= Upload::upload($_FILES, "/uploads/", array("jpg", "jpeg", "gif", "png","PNG","JPG","JPEG","GIF"), $this->user->user_id);
 		
 		$data = Array("picture" => $picture);
 		
 		//Resize and Save Image
-	//	$imageObj = new Image('/Users/weijia/Desktop/CS50/project/p2.geohangout.biz-master/uploads/'.$picture);
-	//	$imageObj->resize(300,300,'crop');
-	//	$imageObj->save_image('/Users/weijia/Desktop/CS50/project/p2.geohangout.biz-master/uploads/'.$picture);		
+	#	$imgObj = new Image("/Users/weijia/Desktop/CS50/geocatchup"."/uploads/$picture");		
+	#	$imgObj-> resize(300,300,'crop');
+	# 	$imgObj-> save_image("/Users/weijia/Desktop/CS50/geocatchup/"."/uploads/$picture");		
 		
 		DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = '".$this->user->user_id."'");
 		

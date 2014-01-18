@@ -38,8 +38,34 @@ class posts_controller extends base_controller {
         # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
         DB::instance(DB_NAME)->update_or_insert_row('posts', $data);
 			
-		# Sending group emails
-		if($_POST['group'])
+		# Sending group emails today
+		if($_POST['group']== "Everyone")
+		{
+			$g ='SELECT users.user_id,users.email
+    			FROM users
+    			INNER JOIN users_users
+    			ON users.user_id = users_users.user_id		
+				WHERE users_users.user_id_followed = '.$this->user->user_id;
+			
+			$emails = DB::instance(DB_NAME)->select_kv($g, 'user_id', 'email');
+			$useremail = $this->user->email;
+			$user_first= $this->user->first_name;
+			$user_last = $this->user->last_name;
+		
+			foreach ($emails as $key => $value) 
+			{							
+				$to = $value;		
+				$subject = "Would you like to join? ";	
+				$message = '<html> <head><h1> Geocatchup </h1></head></html>'.$user_first.' '.$user_last.' would like you to join for '.$_POST['interest'].' at '.$_POST['place'].' at '.$_POST['time'].' on '.$_POST['date'].' sent via Geocatchup.com ';
+				$from = "$useremail";
+				$headers = "MIME-Version: 1.0" . "\r\n";
+				$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
+				$headers .= "From:" . $from;
+				mail($to,$subject,$message,$headers);
+			}
+			
+		}
+		else
 		{
 			$g ='SELECT users.user_id,users.email
     			FROM users
@@ -67,8 +93,62 @@ class posts_controller extends base_controller {
 			}		
 		}
 		
-		# Sending group text messege
-		if($_POST['groupmessage'])
+		# Sending group text massenges
+		if($_POST['groupmessage'] == "Everyone")
+		{
+			$g ='SELECT users.user_id,users.phone
+    			FROM users
+    			INNER JOIN users_users
+    			ON users.user_id = users_users.user_id		
+				WHERE users_users.user_id_followed = '.$this->user->user_id;
+								    	
+			$phones = DB::instance(DB_NAME)->select_kv($g, 'user_id', 'phone');
+			
+			$useremail = $this->user->email;
+			$user_first= $this->user->first_name;
+			$user_last = $this->user->last_name;
+			
+			# sending text message to T-Mobile phone
+			foreach ($phones as $key => $value) 
+			{							
+				$to = "$value@tmomail.net";
+				$message = $user_first.' '.$user_last.' would like you to join for '.$_POST['interest'].' at '.$_POST['place'].' at '.$_POST['time'].' on '.$_POST['date'].' sent via Geocatchup.com ';
+				$from = "$useremail";
+				$headers = "From:" . $from;
+				mail($to,"",$message,$headers);
+			}
+			
+			#sending text message to AT&T phone
+			foreach ($phones as $key => $value) 
+			{							
+				$to = "$value@txt.att.net";	
+				$message = $user_first.' '.$user_last.' would like you to join for '.$_POST['interest'].' at '.$_POST['place'].' at '.$_POST['time'].' on '.$_POST['date'].' sent via Geocatchup.com ';
+				$from = "$useremail";
+				$headers = "From:" . $from;
+				mail($to,"",$message,$headers);
+			}
+			
+			#sending text message to Verizon phone
+			foreach ($phones as $key => $value) 
+			{							
+				$to = "$value@vtext.com";
+				$message = $user_first.' '.$user_last.' would like you to join for '.$_POST['interest'].' at '.$_POST['place'].' at '.$_POST['time'].' on '.$_POST['date'].' sent via Geocatchup.com ';
+				$from = "$useremail";
+				$headers = "From:" . $from;
+				mail($to,"",$message,$headers);
+			}
+			
+			#sending text message to Sprint
+			foreach ($phones as $key => $value) 
+			{							
+				$to = "$value@messaging.sprintpcs.com";	
+				$message = $user_first.' '.$user_last.' would like you to join for '.$_POST['interest'].' at '.$_POST['place'].' at '.$_POST['time'].' on '.$_POST['date'].' sent via Geocatchup.com ';
+				$from = "$useremail";
+				$headers = "From:" . $from;
+				mail($to,"",$message,$headers);
+			}
+		}
+		else
 		{
 		$g ='SELECT users.user_id,users.phone
     			FROM users
@@ -240,7 +320,7 @@ class posts_controller extends base_controller {
             ON posts.user_id = users.user_id
         WHERE users_users.user_id = '.$this->user->user_id.'
         AND (users_users.group = posts.group_category 
-        OR posts.group_category = "Public") ORDER BY posts.created DESC';
+        OR posts.group_category = "Everyone") OR posts.group_category = "Public" ORDER BY posts.created DESC';
       
 
     # Run the query, store the results in the variable $posts

@@ -12,6 +12,7 @@
 			<a class="navigation" href='/posts/users'>Users						</a>
 			<a class="navigation" href ='/posts/followers'> Followers			</a>
 			<a class="navigation" href ='/posts/following'> Following			</a>
+			<a class="navigation" href='/posts/index'>Add a post<a>
         <!-- Menu options for users who are not logged in -->
         <?php else: ?>
 

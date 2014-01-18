@@ -228,7 +228,7 @@ $('.jr-btn').click(function(e) {
 	          } else {
 	          	$(e.target).css('background','#459dcd');
 	            lnk.text('Remove')
-	            
+	            alert("An email was sent");
 	          } 
 	            
 	        }

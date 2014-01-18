@@ -57,7 +57,7 @@
          
           <!-- activity content -->
           <div id="eventfont" >      
-          	<strong id="activity">Activity:  <?=$post['interest']?> </strong><br>
+          	<strong id="activity"><?=$post['interest']?> </strong><br>
 		  	Time: <?=$post['date']?> at <?=$post['time']?><br>
 		  	Place: <?=$post['place']?> <br>
 		  	<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
