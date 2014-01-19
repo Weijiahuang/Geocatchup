@@ -17,9 +17,9 @@ class users_controller extends base_controller {
 		$data = Array("picture" => $picture);
 		
 		//Resize and Save Image
-	#	$imgObj = new Image("/Users/weijia/Desktop/CS50/geocatchup"."/uploads/$picture");		
-	#	$imgObj-> resize(300,300,'crop');
-	# 	$imgObj-> save_image("/Users/weijia/Desktop/CS50/geocatchup/"."/uploads/$picture");		
+		$imgObj = new Image("/Users/weijia/Desktop/CS50/geocatchup"."/uploads/$picture");		
+		$imgObj-> resize(300,300,'crop');
+	 	$imgObj-> save_image("/Users/weijia/Desktop/CS50/geocatchup/"."/uploads/$picture");		
 		
 		DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = '".$this->user->user_id."'");
 		

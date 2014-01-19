@@ -50,7 +50,7 @@ $('.fol-btn').click(function(e) {
 
 
 //pop up windows
-  $(function() {
+  $(document).ready(function() {
     var 
       interest = $( "#interest" ),
       date= $('#date'),
