@@ -103,7 +103,7 @@ $('.fol-btn').click(function(e) {
           bValid = bValid && checkLength( date, "interest", 0, 60 );
           bValid = bValid && checkLength( time, "time", 0, 80 );
           bValid = bValid && checkLength( place, "place", 0, 80 );
-          bValid = bValid && checkRegexp( interest, /^[a-z]([0-9a-z_, !A-Z"])+$/i, "Incorrect Activity Input." );
+          bValid = bValid && checkRegexp( interest, /^[a-z]([0-9a-z_, !A-Z])+$/i, "Incorrect Activity Input." );
           bValid = bValid && checkRegexp(date, /^([0-9a-z-:,/ ])+$/i, "Incorrect time");
           bValid = bValid && checkRegexp(time, /^([0-9a-z-:,/ ])+$/i, "Incorrect time");
           bValid = bValid && checkRegexp( place, /^([0-9a-zA-Z,: ])+$/, "Invalid location." );
@@ -319,7 +319,7 @@ function initialize() {
   
 }
 
-var place = autocomplete.getPlace();
+// var place = autocomplete.getPlace();
 
 // [START region_geolocation]
 // Bias the autocomplete object to the user's geographical location,

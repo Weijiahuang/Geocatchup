@@ -1,5 +1,3 @@
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <br>
 <br>
 <!-- map  -->
@@ -104,9 +102,6 @@
  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
     
 <body onload="initialize()">
-
-<script type="text/javascript" src="/js/jquery.js"> </script>
-<script type="text/javascript" src="/js/nav.js"> </script>
 
 <!-- Pop up windows -->
  <div class="pop_windows" id="dialog-form" title="Make an event">
