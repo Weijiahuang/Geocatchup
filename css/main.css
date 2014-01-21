@@ -280,6 +280,7 @@ html, body {
 
 #create-user {
 	font-size: 1.0em;
+	padding: 5px;
 }
 
 #sendmail {

@@ -127,7 +127,6 @@ $('.fol-btn').click(function(e) {
  
 
 $( "#create-user" )
- .button()
       .click(function() {
         $( "#dialog-form" ).dialog( "open" );
       });
@@ -254,7 +253,7 @@ $('.jr-btn').click(function(e) {
 		        }
 		    }); 
     }
-})
+});
 
 //activity input auto complete
 

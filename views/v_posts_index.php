@@ -27,7 +27,7 @@
        <?php if($user): ?>
             <a id="logout" href='/users/logout'>Logout</a>       
             <a id ="profile" href='/users/profile'>Profile</a>            
-			<button id ="create-user" class="navigation">  Add a post</button>
+			<button id ="create-user" class="navigation ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">  Add a post</button>
 			<a  class="navigation" href='/posts/index'>View posts<a>
 			<a class="navigation" href='/posts/users'>Users<a>
 			<a class="navigation" href ='/posts/followers'> Followers			<a>
@@ -107,7 +107,7 @@
  <div class="pop_windows" id="dialog-form" title="Make an event">
    <p class="validateTips">All form fields are required.</p>
    <form name="eventForm" id="eventForm" method="post" action="/posts/p_add">
-      <fieldset>  
+      <fieldset>
       	<label for="interest">Activity</label>
 	  	<img id="project-icon"  src="../img/default.jpg" class="ui-state-default" alt="">
 	  	<input type="text" name="interest" id="interest" class="text ui-widget-content ui-corner-all interest">
@@ -150,6 +150,18 @@
 		 <option value="11:00am"> 11:00am</option>
 		 <option value="11:30am"> 11:30am</option>
 		 <option value="12pm"> 12:00pm</option>
+		 <option value="12pm"> 1:00pm</option>
+		 <option value="12pm"> 1:30pm</option>
+		 <option value="12pm"> 2:30pm</option>
+		 <option value="12pm"> 3:00pm</option>
+		 <option value="12pm"> 3:30pm</option>
+		 <option value="12pm"> 4:00pm</option>
+		 <option value="12pm"> 4:30pm</option>
+		 <option value="12pm"> 5:00pm</option>
+		 <option value="12pm"> 5:30pm</option>
+		 <option value="12pm"> 6:00pm</option>
+		 <option value="12pm"> 6:30pm</option>
+		 <option value="12pm"> 7:00pm</option>
 		 
        </select>
         
@@ -181,7 +193,8 @@
        </select>
        
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              	Send SMS to &nbsp;
+        
+        Send SMS to &nbsp;
        	<select name="groupmessage">
         <option value=""> </option>
          <option value="Everyone">Everyone</option>
@@ -195,6 +208,54 @@
    </form>
 </div>
 
+<script >
+$('.jr-btn').click(function(e) {
+    e.preventDefault()
+    
+    var lnk=$(this)
+    
+	        //alert(lnk.attr('href'))
+    if(lnk.text()=='I want to join') {
 
-
-
+	    $.ajax({
+	        type: 'POST',
+	        data: {
+	        	id: lnk.attr('href')
+	        },
+	        url: '/posts/'+'join',
+	        success: function(response) {
+	        
+	          if (response == 'false') {
+	            console.log('an error returns');
+	            return;
+	          } else {
+	          	$(e.target).css('background','#459dcd');
+	            lnk.text('Remove')
+	            alert("An email was sent");
+	          } 
+	            
+	        }
+	    }); 
+    }
+    else {
+	     $.ajax({
+		        type: 'POST',
+		        data: {
+		        	id: lnk.attr('href')
+		        },
+		        url: '/posts/'+'remove',
+		        success: function(response) {
+		          if (response == 'false') {
+		            console.log('an error returns');
+		            return;
+		          } else {
+		          	$(e.target).css('background','#9dce2c');		          		    
+					  lnk.text('I want to join')
+					  
+		          } 
+		            
+		        }
+		    }); 
+    }
+});
+</script>
